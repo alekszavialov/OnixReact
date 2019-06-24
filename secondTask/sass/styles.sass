@@ -1,0 +1,276 @@
+@import compass/reset
+@import compass/css3
+@import _fonts.sass
+
+h1
+  font-size: 48px
+  color: #ffffff
+  font-family: Raleway-SemiBold, sans-serif
+
+h2
+  font-size: 32px
+  color: #3e3e3e
+  font-family: Raleway-SemiBold, sans-serif
+
+p, span, a
+  font-size: 14px
+  font-family: Raleway-Medium, sans-serif
+
+a
+  +transition(all 0.3s ease)
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+button
+  font-family: Raleway-Medium, sans-serif
+  outline: none
+
+.container
+  padding: 0 10px
+  width: 1120px
+  margin: 0 auto
+
+.bg-dark
+  background: #353541
+
+section
+  padding-top: 80px
+  h2
+    position: relative
+    padding: 10px 0
+    &:after
+      content: ""
+      display: block
+      width: 75px
+      height: 2px
+      position: absolute
+      bottom: 0
+      background: #fb6470
+
+header
+  padding: 190px 0
+
+.header-block
+  width: 325px
+  margin-left: 540px
+  ul
+    display: flex
+    margin-bottom: 45px
+    flex-direction: row
+    justify-content: center
+    li
+      &:last-child
+        margin-right: 0
+        p
+          padding-right: 0
+        &:after
+          display: none
+
+      position: relative
+      margin-right: 15px
+      display: flex
+      &:after
+        content: ""
+        display: block
+        height: 100%
+        width: 2px
+        position: relative
+        background: #ffffff
+        right: 0
+        border-left: 1px solid #8d8d92
+        border-right: 1px solid #6f6f75
+  p
+    color: #ffffff
+    padding-right: 14px
+    font-size: 18px
+  h1
+    margin: 0 0 14px 0
+    text-align: center
+    border: 4px solid #fb6470
+    border-right: none
+    border-left: none
+    padding: 20px 46px
+  h1, button
+    text-transform: capitalize
+  button
+    display: block
+    width: 170px
+    height: 49px
+    margin: 0 auto
+    text-align: center
+    border: none
+    background: #fb6470
+    font-size: 22px
+    color: #fff
+    cursor: pointer
+    border-radius: 8px
+    +transition(all 0.3s ease)
+    &:hover
+      color: #353541
+
+.navigation-menu
+  top: 47px
+  position: fixed
+
+#navigation-menu-button
+  left: 20px
+  height: 33px
+  overflow: hidden
+  z-index: 1000
+  position: relative
+  width: 56px
+  display: flex
+  opacity: 0.8
+  +transition(all 0.3s ease)
+  cursor: pointer
+  flex-direction: column
+  &:hover
+    opacity: 1
+  span
+    +transition(all 0.3s ease)
+    position: relative
+    display: block
+    left: 0
+    width: 100%
+    height: 5px
+    background: #fb6470
+    margin-bottom: 9px
+    &:last-child
+      margin-bottom: 0
+
+#navigation-menu-button.open
+  span
+    margin-bottom: 0
+    &:nth-child(1), &:nth-child(3)
+      position: absolute
+      top: 50%
+      left: 50%
+    &:nth-child(2)
+      left: 100%
+    &:nth-child(1)
+      +transform(translateX(-50%) translateY(-50%) rotate(-45deg))
+    &:nth-child(3)
+      +transform(translateX(-50%) translateY(-50%) rotate(45deg))
+
+#navigation-menu-list
+  width: 220px
+  display: flex
+  flex-direction: column
+  li
+    padding: 20px 10px
+    border-bottom: 2px solid #282835
+  a
+    font-size: 22px
+    color: #ffffff
+
+.hidden
+  display: none !important
+
+#about-me
+  background: #f9f9f9
+.about-me-block
+  display: flex
+  flex-direction: row
+.about-me-block-image
+  flex: 0 0 50%
+  img
+    max-height: 100%
+    max-width: 100%
+.about-me-block-info
+  flex: 0 0 50%
+  h2
+    padding-top: 105px
+  >p
+    line-height: 20px
+    width: 405px
+    font-size: 16px
+    color: #3e3e3e
+    margin: 30px 0 20px 0
+  ul
+    background: #ffffff
+    display: flex
+    flex-direction: column
+    width: 339px
+  li
+    &:last-child
+      border: none
+    padding: 20px 0
+    border-bottom: 2px solid #e5e5e5
+    display: flex
+    flex-direction: row
+    span, p, a
+      color: #3e3e3e
+      font-size: 18px
+    span
+      font-family: Raleway-SemiBold, sans-serif
+      display: flex
+      color: #3e3e3e
+      position: relative
+      &:after
+        content: ":"
+        padding: 0 5px
+        display: block
+        font-size: 18px
+        position: relative
+        right: 0
+.tree
+  position: relative
+  .tree-item
+    padding: 20px
+    display: flex
+    flex-direction: row
+    width: 475px
+    height: 145px
+    border-radius: 5px
+    flex-wrap: wrap
+    h3
+      margin: 0 20px 0 0
+      font-size: 22px
+      font-family: Raleway-Regular, sans-serif
+    span
+      font-size: 20px
+    .tree-item-date, p
+      flex: 0 0 100%
+    .tree-item-date
+      font-size: 18px
+      text-transform: uppercase
+      color: #fb6470
+  li
+    width: 50%
+    &:nth-child(odd)
+      left: 60%
+    >span
+      display: block
+      position: absolute
+      width: 40px
+      height: 40px
+      border: 2px solid #050505
+      border-radius: 50%
+      &:after
+        content: ""
+        display: block
+        height: 18px
+        width: 18px
+        border: 2px solid #050505
+        border-radius: 50%
+        top: 50%
+        left: 50%
+        background: #fb6470
+        position: absolute
+        +transform(translateX(-50%) translateY(-50%))
+    position: relative
+    &:after
+      display: block
+      position: absolute
+  &:after
+    height: 100%
+    top: 0
+    content: ""
+    display: block
+    position: absolute
+    left: 50%
+    border-left: 1px solid #353541
+    border-right: 1px solid #cfcfd2
+    +transform(translateX(-50%))
+@import _media.sass
