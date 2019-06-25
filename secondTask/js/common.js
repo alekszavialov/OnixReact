@@ -1,11 +1,19 @@
 window.onload = function () {
 
-    const menuButton = document.getElementById('navigation-menu-button');
-    const navigationMenuList = document.getElementById('navigation-menu-list');
+    const menuButton = document.getElementById('navigationMenuButton');
+    const navigationMenuList = document.getElementById('navigationMenuList');
 
     menuButton.addEventListener('click', function () {
-        this.classList.toggle('open');
+        handleOpenMenu();
+    });
+
+    navigationMenuList.addEventListener('click', function () {
+        handleOpenMenu();
+    });
+
+    function handleOpenMenu() {
+        menuButton.classList.toggle('open');
         navigationMenuList.classList.toggle('hidden');
-    })
+    }
 
 };

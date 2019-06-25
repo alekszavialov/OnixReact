@@ -34,7 +34,10 @@ button
 .bg-dark
   background: #353541
 
-section
+.separator
+  border-bottom: 1px solid #e5e5e5
+
+article
   padding-top: 80px
   h2
     position: relative
@@ -111,11 +114,11 @@ header
 
 .navigation-menu
   z-index: 1000
-  top: 47px
+  top: 30px
   position: fixed
   padding: 10px
 
-#navigation-menu-button
+#navigationMenuButton
   height: 33px
   overflow: hidden
   z-index: 1000
@@ -140,7 +143,7 @@ header
     &:last-child
       margin-bottom: 0
 
-#navigation-menu-button.open
+#navigationMenuButton.open
   span
     margin-bottom: 0
     top: 50%
@@ -155,7 +158,7 @@ header
     &:nth-child(3)
       +transform(translateX(-50%) translateY(-50%) rotate(45deg))
 
-#navigation-menu-list
+#navigationMenuList
   width: 220px
   display: flex
   flex-direction: column
@@ -169,21 +172,24 @@ header
 .hidden
   display: none !important
 
-#about-me
+#aboutMe
   background: #f9f9f9
+
 .about-me-block
   display: flex
   flex-direction: row
+
 .about-me-block-image
   flex: 0 0 50%
   img
     max-height: 100%
     max-width: 100%
+
 .about-me-block-info
   flex: 0 0 50%
   h2
     padding-top: 105px
-  >p
+  > p
     line-height: 20px
     width: 405px
     font-size: 16px
@@ -216,10 +222,14 @@ header
         font-size: 18px
         position: relative
         right: 0
+
 #workExperience
-  padding: 70px 0 80px 0
+  padding: 70px 0 0 0
+  .container
+    padding-bottom: 80px
   h2
     margin-bottom: 60px
+
 .tree
   position: relative
   display: flex
@@ -287,7 +297,7 @@ header
         top: 101px
     &:last-child
       margin-bottom: 0
-    >span
+    > span
       display: block
       position: absolute
       width: 40px
@@ -322,8 +332,10 @@ header
     border-left: 1px solid #353541
     border-right: 1px solid #cfcfd2
     +transform(translateX(-50%))
+
 #education
   padding: 70px 0 80px 0
+
 #mySkills
   background: #1d1d24
   padding: 65px 0 55px 0
@@ -331,6 +343,7 @@ header
     margin-bottom: 40px
   h2, p
     color: #ffffff
+
 .my-skills-list-scale
   display: flex
   flex-direction: row
@@ -340,18 +353,25 @@ header
   div
     width: 265px
     height: 5px
-    background: #fb6470
+    background: #f9f9f9
     position: relative
-    &:after
-      content: ""
-      display: block
+    span
       position: relative
-      top: 50%
-      width: 18px
-      height: 18px
-      +transform(translateX(-50%) translateY(-50%))
+      display: block
+      height: 100%
       background: #fb6470
-      border-radius: 50%
+      &:before
+        content: ""
+        display: block
+        position: relative
+        top: 50%
+        left: 100%
+        width: 18px
+        height: 18px
+        +transform(translateX(-50%) translateY(-50%))
+        background: #fb6470
+        border-radius: 50%
+
 .my-skills-list
   display: flex
   flex-direction: row
@@ -361,8 +381,162 @@ header
     flex: 1 0 calc(100% / 3)
     display: flex
     flex-direction: column
-    >p
+    > p
       margin-bottom: 15px
       font-size: 18px
       text-transform: capitalize
+
+footer
+  padding: 107px 0 30px 0
+
+.footer-block
+  display: flex
+  flex-direction: row
+  padding-bottom: 80px
+
+.footer-block-message-form, .footer-block-about
+  flex: 1 0 50%
+  display: flex
+
+.footer-block-message-form
+  flex-direction: row
+  flex-wrap: wrap
+  position: relative
+  padding-bottom: 35px
+  input, textarea, button
+    outline: none
+    +transition(all 0.3s ease)
+  input
+    margin: 0 15px 17px 0
+  input, textarea
+    border: 1px solid #353541
+    width: 265px
+    padding: 10px
+    box-sizing: border-box
+    &:hover, &:active, &:focus
+      border-color: #fb6470
+    &:valid
+      border-color: #4ded75
+    +input-placeholder
+      font-family: Raleway-MediumItalic, sans-serif
+      color: #3e3e3e
+      font-size: 14px
+  h2
+    font-size: 22px
+    font-family: Raleway-Medium, sans-serif
+    margin-bottom: 20px
+  h2
+    flex: 1 1 100%
+  .footer-block-message-form-inputs, textarea
+    flex: 1 0 50%
+  textarea
+    height: 145px
+    resize: none
+    box-sizing: border-box
+  button
+    border: none
+    opacity: 0.7
+    font-size: 16px
+    background: #fb6470
+    font-family: Raleway-Medium, sans-serif
+    color: #ffffff
+    cursor: pointer
+    text-transform: capitalize
+    position: absolute
+    right: 0
+    bottom: 0
+    padding: 8px 17px
+    &:hover
+      opacity: 1
+
+.footer-block-about
+  flex-direction: column
+  padding-left: 50px
+  margin-left: 60px
+  li
+    display: flex
+    flex-direction: row
+    align-items: center
+    margin-bottom: 30px
+    &:last-child
+      margin-bottom: 0
+
+.footer-block-about-ico
+  display: block
+  position: relative
+  margin-right: 40px
+
+.footer-block-about-info
+  span, p
+    color: #3e3e3e
+  span
+    display: block
+    text-transform: capitalize
+    font-size: 22px
+    margin-bottom: 22px
+  p
+    font-size: 16px
+.footer-block-socials
+  margin-top: 35px
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+  li
+    position: relative
+    padding: 0 10px
+    border-right: 1px solid #acacac
+    &:last-child
+      border-right: none
+.footer-block-copyright
+  text-align: center
+  margin-top: 15px
+.ico-custom
+  width: 35px
+  height: 35px
+  content: ""
+  display: block
+  mask-size: cover
+  -webkit-mask-size: cover
+  background: #3e3e3e
+.ico-social
+  width: 20px
+  height: 20px
+  +transition(all 0.3s ease)
+  content: ""
+  display: block
+  mask-size: cover
+  -webkit-mask-size: cover
+  background: #3e3e3e
+.ico-home
+  -webkit-mask: url(../images/icons/custom/home-solid.svg) no-repeat 50% 50%
+  mask: url(../images/icons/custom/home-solid.svg) no-repeat 50% 50%
+
+.ico-email
+  -webkit-mask: url(../images/icons/custom/paper-plane-regular.svg) no-repeat 50% 50%
+  mask: url(../images/icons/custom/paper-plane-regular.svg) no-repeat 50% 50%
+
+.ico-phone
+  -webkit-mask: url(../images/icons/custom/phone-solid.svg) no-repeat 50% 50%
+  mask: url(../images/icons/custom/phone-solid.svg) no-repeat 50% 50%
+  +transform(rotate(180deg))
+
+.ico-dribble
+  -webkit-mask: url(../images/icons/social/dribbble-brands.svg) no-repeat 50% 50%
+  mask: url(../images/icons/social/dribbble-brands.svg) no-repeat 50% 50%
+  &:hover
+    background: #fb6470
+
+.ico-skype
+  -webkit-mask: url(../images/icons/social/skype-brands.svg) no-repeat 50% 50%
+  mask: url(../images/icons/social/skype-brands.svg) no-repeat 50% 50%
+  &:hover
+    background: #69d4d8
+
+.ico-twitter
+  -webkit-mask: url(../images/icons/social/twitter-brands.svg) no-repeat 50% 50%
+  mask: url(../images/icons/social/twitter-brands.svg) no-repeat 50% 50%
+  &:hover
+    background: #69d4d8
+
 @import _media.sass
