@@ -180,6 +180,7 @@ header
 .about-me-block
   +display-flex
   +flex-direction(row)
+
 .about-me-block-image
   +flex(0 0 50%)
   img
@@ -208,9 +209,11 @@ header
     border-bottom: 2px solid #e5e5e5
     +display-flex
     +flex-direction(row)
+    +flex-wrap(wrap)
     span, p, a
       color: #3e3e3e
       font-size: 18px
+      max-width: 100%
     span
       font-family: Raleway-SemiBold, sans-serif
       +display-flex
@@ -282,7 +285,7 @@ header
           right: 100%
           border-top: 25px solid #353541
           border-left: 35px solid transparent
-      >span
+      > span
         top: 0
         left: -21px
     &:nth-child(odd)
@@ -336,6 +339,8 @@ header
 
 #education
   padding: 70px 0 80px 0
+  h2
+    margin-bottom: 60px
 
 #mySkills
   background: #1d1d24
@@ -478,6 +483,7 @@ footer
   p
     font-size: 16px
     line-height: 20px
+
 .footer-block-socials
   margin-top: 35px
   +display-flex
@@ -489,58 +495,66 @@ footer
     border-right: 1px solid #acacac
     &:last-child
       border-right: none
+
 .footer-block-copyright
   text-align: center
   margin-top: 15px
+
 .ico-custom
   width: 35px
+  +flex(0 0 35px)
   height: 35px
-  content: ""
-  display: block
   mask-size: cover
   -webkit-mask-size: cover
+  mask-repeat: no-repeat
+  -webkit-mask-repeat: no-repeat
+  mask-position: center
+  -webkit-mask-position: center
+  display: block
   background: #3e3e3e
+
 .ico-social
   width: 20px
+  +flex(0 0 20px)
   height: 20px
   +transition(all 0.3s ease)
   display: block
-  +filter(grayscale(100%))
-  &:hover
-    +filter(grayscale(0%))
-  //mask-size: cover
-  //-webkit-mask-size: cover
-  //background: #3e3e3e
+  mask-size: cover
+  -webkit-mask-size: cover
+  mask-repeat: no-repeat
+  -webkit-mask-repeat: no-repeat
+  mask-position: center
+  -webkit-mask-position: center
+  background: #3e3e3e
+
 .ico-home
-  -webkit-mask: url(../images/icons/custom/home-solid.svg) no-repeat 50% 50%
-  mask: url(../images/icons/custom/home-solid.svg) no-repeat 50% 50%
+  -webkit-mask-image: url(../images/icons/custom/home-solid.svg)
+  mask-image: url(../images/icons/custom/home-solid.svg)
 
 .ico-email
-  -webkit-mask: url(../images/icons/custom/paper-plane-regular.svg) no-repeat 50% 50%
-  mask: url(../images/icons/custom/paper-plane-regular.svg) no-repeat 50% 50%
+  -webkit-mask-image: url(../images/icons/custom/paper-plane-regular.svg)
+  mask-image: url(../images/icons/custom/paper-plane-regular.svg)
 
 .ico-phone
-  -webkit-mask: url(../images/icons/custom/phone-solid.svg) no-repeat 50% 50%
-  mask: url(../images/icons/custom/phone-solid.svg) no-repeat 50% 50%
+  -webkit-mask-image: url(../images/icons/custom/phone-solid.svg)
+  mask-image: url(../images/icons/custom/phone-solid.svg)
   +transform(rotate(180deg))
 
 .ico-dribble
-  -webkit-mask: url(../images/icons/social/dribbble-brands.svg) no-repeat 50% 50%
-  mask: url(../images/icons/social/dribbble-brands.svg) no-repeat 50% 50%
+  -webkit-mask-image: url(../images/icons/social/dribbble-brands.svg)
+  mask-image: url(../images/icons/social/dribbble-brands.svg)
   &:hover
     background: #fb6470
 
 .ico-skype
-  -webkit-mask: url(../images/icons/social/skype-brands.svg) no-repeat 50% 50%
-  mask: url(../images/icons/social/skype-brands.svg) no-repeat 50% 50%
+  -webkit-mask-image: url(../images/icons/social/skype-brands.svg)
+  mask-image: url(../images/icons/social/skype-brands.svg)
   &:hover
     background: #69d4d8
 
 .ico-twitter
-  //-webkit-mask: url(../images/icons/social/twitter-brands.svg) no-repeat 50% 50%
-  +mas(url(../images/icons/social/twitter-brands.svg))
   mask-image: url(../images/icons/social/twitter-brands.svg)
-  mask-repeat: space
-
-
+  -webkit-mask-image: url(../images/icons/social/twitter-brands.svg)
+  &:hover
+    background: #69d4d8
 @import _media.sass
