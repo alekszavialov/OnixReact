@@ -15,6 +15,7 @@ h2
 p, span, a
   font-size: 14px
   font-family: Raleway-Medium, sans-serif
+  word-wrap: break-word
 
 a
   +transition(all 0.3s ease)
@@ -59,21 +60,21 @@ header
   width: 325px
   margin-left: 540px
   ul
-    display: flex
+    +display-flex
     margin-bottom: 45px
-    flex-direction: row
-    justify-content: center
+    +flex-direction(row)
+    +justify-content(center)
     li
+      &:first-child
+        margin-left: 0
       &:last-child
-        margin-right: 0
         p
           padding-right: 0
         &:after
           display: none
-
       position: relative
-      margin-right: 15px
-      display: flex
+      margin-left: 15px
+      +display-flex
       &:after
         content: ""
         display: block
@@ -125,11 +126,11 @@ header
   z-index: 1000
   position: relative
   width: 56px
-  display: flex
+  +display-flex
   opacity: 0.8
   +transition(all 0.3s ease)
   cursor: pointer
-  flex-direction: column
+  +flex-direction(column)
   &:hover
     opacity: 1
   span
@@ -161,8 +162,8 @@ header
 
 #navigationMenuList
   width: 220px
-  display: flex
-  flex-direction: column
+  +display-flex
+  +flex-direction(column)
   li
     padding: 20px 10px
     border-bottom: 2px solid #282835
@@ -177,17 +178,16 @@ header
   background: #f9f9f9
 
 .about-me-block
-  display: flex
-  flex-direction: row
-
+  +display-flex
+  +flex-direction(row)
 .about-me-block-image
-  flex: 0 0 50%
+  +flex(0 0 50%)
   img
     max-height: 100%
     max-width: 100%
 
 .about-me-block-info
-  flex: 0 0 50%
+  +flex(0 0 50%)
   h2
     padding-top: 105px
   > p
@@ -198,22 +198,22 @@ header
     margin: 30px 0 20px 0
   ul
     background: #ffffff
-    display: flex
-    flex-direction: column
+    +display-flex
+    +flex-direction(column)
     width: 339px
   li
     &:last-child
       border: none
     padding: 20px 0
     border-bottom: 2px solid #e5e5e5
-    display: flex
-    flex-direction: row
+    +display-flex
+    +flex-direction(row)
     span, p, a
       color: #3e3e3e
       font-size: 18px
     span
       font-family: Raleway-SemiBold, sans-serif
-      display: flex
+      +display-flex
       color: #3e3e3e
       position: relative
       &:after
@@ -233,18 +233,18 @@ header
 
 .tree
   position: relative
-  display: flex
-  flex-wrap: wrap
+  +display-flex
+  +flex-wrap(wrap)
   .tree-item
     background: #353541
     padding: 20px
-    display: flex
+    +display-flex
     box-sizing: border-box
-    flex-direction: row
+    +flex-direction(row)
     width: 475px
     height: 145px
     border-radius: 10px
-    flex-wrap: wrap
+    +flex-wrap(wrap)
     position: relative
     &:after
       content: ""
@@ -261,7 +261,7 @@ header
       font-size: 20px
       color: #ffffff
     .tree-item-date, p
-      flex: 0 0 100%
+      +flex(0 0 100%)
     .tree-item-date
       font-size: 18px
       text-transform: uppercase
@@ -270,11 +270,11 @@ header
       color: #ffffff
       line-height: 22px
   li
-    flex: 0 0 50%
-    display: flex
-    flex-direction: row
+    +flex(0 0 50%)
+    +display-flex
+    +flex-direction(row)
     &:nth-child(even)
-      justify-content: flex-end
+      +justify-content(flex-end)
       margin-bottom: 190px
       .tree-item
         &:after
@@ -282,7 +282,7 @@ header
           right: 100%
           border-top: 25px solid #353541
           border-left: 35px solid transparent
-      span
+      >span
         top: 0
         left: -21px
     &:nth-child(odd)
@@ -346,9 +346,9 @@ header
     color: #ffffff
 
 .my-skills-list-scale
-  display: flex
-  flex-direction: row
-  align-items: center
+  +display-flex
+  +flex-direction(row)
+  +align-items(center)
   p
     margin-left: 20px
   div
@@ -374,14 +374,14 @@ header
         border-radius: 50%
 
 .my-skills-list
-  display: flex
-  flex-direction: row
-  flex-wrap: wrap
+  +display-flex
+  +flex-direction(row)
+  +flex-wrap(wrap)
   li
     margin-bottom: 25px
-    flex: 1 0 calc(100% / 3)
-    display: flex
-    flex-direction: column
+    +flex(1 0 calc(100% / 3))
+    +display-flex
+    +flex-direction(column)
     > p
       margin-bottom: 15px
       font-size: 18px
@@ -391,17 +391,17 @@ footer
   padding: 107px 0 30px 0
 
 .footer-block
-  display: flex
-  flex-direction: row
+  +display-flex
+  +flex-direction(row)
   padding-bottom: 80px
 
 .footer-block-message-form, .footer-block-about
-  flex: 1 0 50%
-  display: flex
+  +flex(1 0 50%)
+  +display-flex
 
 .footer-block-message-form
-  flex-direction: row
-  flex-wrap: wrap
+  +flex-direction(row)
+  +flex-wrap(wrap)
   position: relative
   padding-bottom: 35px
   input, textarea, button
@@ -427,9 +427,9 @@ footer
     font-family: Raleway-Medium, sans-serif
     margin-bottom: 20px
   h2
-    flex: 1 1 100%
+    +flex(1 1 100%)
   .footer-block-message-form-inputs, textarea
-    flex: 1 0 50%
+    +flex(1 0 50%)
   textarea
     height: 145px
     resize: none
@@ -451,13 +451,13 @@ footer
       opacity: 1
 
 .footer-block-about
-  flex-direction: column
+  +flex-direction(column)
   padding-left: 50px
   margin-left: 60px
   li
-    display: flex
-    flex-direction: row
-    align-items: center
+    +display-flex
+    +flex-direction(row)
+    +align-items(center)
     margin-bottom: 30px
     &:last-child
       margin-bottom: 0
@@ -477,12 +477,12 @@ footer
     margin-bottom: 22px
   p
     font-size: 16px
+    line-height: 20px
 .footer-block-socials
   margin-top: 35px
-  display: flex
-  flex-direction: row
-  justify-content: center
-  align-items: center
+  +display-flex
+  +flex-direction(row)
+  +justify-content(center)
   li
     position: relative
     padding: 0 10px
@@ -504,11 +504,13 @@ footer
   width: 20px
   height: 20px
   +transition(all 0.3s ease)
-  content: ""
   display: block
-  mask-size: cover
-  -webkit-mask-size: cover
-  background: #3e3e3e
+  +filter(grayscale(100%))
+  &:hover
+    +filter(grayscale(0%))
+  //mask-size: cover
+  //-webkit-mask-size: cover
+  //background: #3e3e3e
 .ico-home
   -webkit-mask: url(../images/icons/custom/home-solid.svg) no-repeat 50% 50%
   mask: url(../images/icons/custom/home-solid.svg) no-repeat 50% 50%
@@ -535,9 +537,10 @@ footer
     background: #69d4d8
 
 .ico-twitter
-  -webkit-mask: url(../images/icons/social/twitter-brands.svg) no-repeat 50% 50%
-  mask: url(../images/icons/social/twitter-brands.svg) no-repeat 50% 50%
-  &:hover
-    background: #69d4d8
+  //-webkit-mask: url(../images/icons/social/twitter-brands.svg) no-repeat 50% 50%
+  +mas(url(../images/icons/social/twitter-brands.svg))
+  mask-image: url(../images/icons/social/twitter-brands.svg)
+  mask-repeat: space
+
 
 @import _media.sass
