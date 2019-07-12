@@ -116,7 +116,11 @@ export default class Home extends Component {
         const {skills, workExperience, education} = this.state;
 
         return (
-            <HomeComponent skills={skills} education={education} workExperience={workExperience}/>
+            <HomeComponent
+                skills={skills}
+                education={education}
+                workExperience={workExperience}
+            />
         )
     }
 

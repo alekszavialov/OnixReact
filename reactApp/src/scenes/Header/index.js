@@ -24,7 +24,10 @@ export default class Header extends Component {
         const {menuIsOpen} = this.state;
 
         return (
-            <HeaderComponent toggleMenu={this.toggleMenu} menuIsOpen={menuIsOpen}/>
+            <HeaderComponent
+                toggleMenu={this.toggleMenu}
+                menuIsOpen={menuIsOpen}
+            />
         )
     }
 
