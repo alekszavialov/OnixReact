@@ -1,28 +1,28 @@
 @font-face {
   font-family: "Raleway-Regular";
-  src: url("../fonts/Raleway/Raleway-Regular.eot");
-  src: url("../fonts/Raleway/Raleway-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Raleway/Raleway-Regular.woff") format("woff"), url("../fonts/Raleway/Raleway-Regular.ttf") format("truetype");
+  src: url("../assets/fonts/Raleway/Raleway-Regular.eot");
+  src: url("../assets/fonts/Raleway/Raleway-Regular.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/Raleway/Raleway-Regular.woff") format("woff"), url("../assets/fonts/Raleway/Raleway-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Raleway-Medium";
-  src: url("../fonts/Raleway/Raleway-Medium.eot");
-  src: url("../fonts/Raleway/Raleway-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/Raleway/Raleway-Medium.woff") format("woff"), url("../fonts/Raleway/Raleway-Medium.ttf") format("truetype");
+  src: url("../assets/fonts/Raleway/Raleway-Medium.eot");
+  src: url("../assets/fonts/Raleway/Raleway-Medium.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/Raleway/Raleway-Medium.woff") format("woff"), url("../assets/fonts/Raleway/Raleway-Medium.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Raleway-MediumItalic";
-  src: url("../fonts/Raleway/Raleway-MediumItalic.eot");
-  src: url("../fonts/Raleway/Raleway-MediumItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/Raleway/Raleway-MediumItalic.woff") format("woff"), url("../fonts/Raleway/Raleway-MediumItalic.ttf") format("truetype");
+  src: url("../assets/fonts/Raleway/Raleway-MediumItalic.eot");
+  src: url("../assets/fonts/Raleway/Raleway-MediumItalic.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/Raleway/Raleway-MediumItalic.woff") format("woff"), url("../assets/fonts/Raleway/Raleway-MediumItalic.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Raleway-SemiBold";
-  src: url("../fonts/Raleway/Raleway-SemiBold.eot");
-  src: url("../fonts/Raleway/Raleway-SemiBold.eot?#iefix") format("embedded-opentype"), url("../fonts/Raleway/Raleway-SemiBold.woff") format("woff"), url("../fonts/Raleway/Raleway-SemiBold.ttf") format("truetype");
+  src: url("../assets/fonts/Raleway/Raleway-SemiBold.eot");
+  src: url("../assets/fonts/Raleway/Raleway-SemiBold.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/Raleway/Raleway-SemiBold.woff") format("woff"), url("../assets/fonts/Raleway/Raleway-SemiBold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -937,43 +937,55 @@ footer {
 }
 
 .ico-home {
-  -webkit-mask-image: url(../images/icons/custom/home-solid.svg);
-  mask-image: url(../images/icons/custom/home-solid.svg);
+  -webkit-mask-image: url(../assets/images/icons/custom/home-solid.svg);
+  mask-image: url(../assets/images/icons/custom/home-solid.svg);
 }
 
 .ico-email {
-  -webkit-mask-image: url(../images/icons/custom/paper-plane-regular.svg);
-  mask-image: url(../images/icons/custom/paper-plane-regular.svg);
+  -webkit-mask-image: url(../assets/images/icons/custom/paper-plane-regular.svg);
+  mask-image: url(../assets/images/icons/custom/paper-plane-regular.svg);
 }
 
 .ico-phone {
-  -webkit-mask-image: url(../images/icons/custom/phone-solid.svg);
-  mask-image: url(../images/icons/custom/phone-solid.svg);
+  -webkit-mask-image: url(../assets/images/icons/custom/phone-solid.svg);
+  mask-image: url(../assets/images/icons/custom/phone-solid.svg);
   transform: rotate(180deg);
 }
 
 .ico-dribble {
-  -webkit-mask-image: url(../images/icons/social/dribbble-brands.svg);
-  mask-image: url(../images/icons/social/dribbble-brands.svg);
+  -webkit-mask-image: url(../assets/images/icons/social/dribbble-brands.svg);
+  mask-image: url(../assets/images/icons/social/dribbble-brands.svg);
 }
 .ico-dribble:hover {
   background: #fb6470;
 }
 
 .ico-skype {
-  -webkit-mask-image: url(../images/icons/social/skype-brands.svg);
-  mask-image: url(../images/icons/social/skype-brands.svg);
+  -webkit-mask-image: url(../assets/images/icons/social/skype-brands.svg);
+  mask-image: url(../assets/images/icons/social/skype-brands.svg);
 }
 .ico-skype:hover {
   background: #69d4d8;
 }
 
 .ico-twitter {
-  -webkit-mask-image: url(../images/icons/social/twitter-brands.svg);
-  mask-image: url(../images/icons/social/twitter-brands.svg);
+  -webkit-mask-image: url(../assets/images/icons/social/twitter-brands.svg);
+  mask-image: url(../assets/images/icons/social/twitter-brands.svg);
 }
 .ico-twitter:hover {
   background: #69d4d8;
+}
+
+.yearsTree {
+  padding: 10px;
+  width: 100%;
+}
+.yearsTree tr, .yearsTree td {
+  border: 1px solid #000;
+}
+.yearsTree td {
+  padding: 5px;
+  text-align: center;
 }
 
 @media only screen and (max-width: 1200px) {

@@ -1,0 +1,12 @@
+.remove {
+  display: block;
+  text-transform: uppercase;
+  font-size: 26px;
+  padding: 10px;
+  border: 1px solid white;
+  cursor: pointer;
+}
+.remove:hover {
+  color: red;
+  border-color: red;
+}

@@ -1,12 +1,33 @@
 import React, {Component, Fragment} from 'react';
 
 import HomeTree from './homeTree';
+import YearsTable from './YearsTable';
 
 export default class HomeComponent extends Component {
 
+    constructor(props){
+        super(props);
+
+        this.sortByFilter = this.sortByFilter.bind(this);
+        this.addToYearsTable = this.addToYearsTable.bind(this);
+        this.removeItem = this.removeItem.bind(this);
+    }
+
+    sortByFilter(){
+        this.props.sortByFilter();
+    }
+
+    addToYearsTable(data){
+        this.props.addToYearsTable(data);
+    }
+
+    removeItem(data){
+        this.props.removeItem(data);
+    }
+
     render() {
 
-        const {skills, workExperience, education} = this.props;
+        const {skills, workExperience, education, yearsTable} = this.props;
 
         return (
             <Fragment>
@@ -59,10 +80,21 @@ export default class HomeComponent extends Component {
                                 </ul>
                             </div>
                             <div className="about-me-block-image">
-                                <img src={require("../../../images/about-me-img.png")} alt="me"/>
+                                <img src={require("../../../assets/images/about-me-img.png")} alt="me"/>
                             </div>
                         </div>
 
+                    </div>
+                </article>
+                <article id="table">
+                    <div className="container">
+                        <h2>Years</h2>
+                        <YearsTable
+                            data={yearsTable}
+                            sortByFilter={this.sortByFilter}
+                            addToYearsTable={this.addToYearsTable}
+                            removeItem={this.removeItem}
+                        />
                     </div>
                 </article>
                 <article id="workExperience">

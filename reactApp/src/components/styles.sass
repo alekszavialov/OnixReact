@@ -576,27 +576,36 @@ footer
   background: #3e3e3e
 
 .ico-home
-  +mask-image(url(../images/icons/custom/home-solid.svg))
+  +mask-image(url(../assets/images/icons/custom/home-solid.svg))
 
 .ico-email
-  +mask-image(url(../images/icons/custom/paper-plane-regular.svg))
+  +mask-image(url(../assets/images/icons/custom/paper-plane-regular.svg))
 
 .ico-phone
-  +mask-image(url(../images/icons/custom/phone-solid.svg))
+  +mask-image(url(../assets/images/icons/custom/phone-solid.svg))
   transform: rotate(180deg)
 
 .ico-dribble
-  +mask-image(url(../images/icons/social/dribbble-brands.svg))
+  +mask-image(url(../assets/images/icons/social/dribbble-brands.svg))
   &:hover
     background: #fb6470
 
 .ico-skype
-  +mask-image(url(../images/icons/social/skype-brands.svg))
+  +mask-image(url(../assets/images/icons/social/skype-brands.svg))
   &:hover
     background: #69d4d8
 
 .ico-twitter
-  +mask-image(url(../images/icons/social/twitter-brands.svg))
+  +mask-image(url(../assets/images/icons/social/twitter-brands.svg))
   &:hover
     background: #69d4d8
+
+.yearsTree
+  padding: 10px
+  width: 100%
+  tr, td
+    border: 1px solid #000
+  td
+    padding: 5px
+    text-align: center
 @import _media.sass

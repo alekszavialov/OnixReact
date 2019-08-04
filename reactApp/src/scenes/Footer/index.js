@@ -68,7 +68,7 @@ export default class Footer extends Component {
                                     <a
                                         className={`ico-social ${item.className}`}
                                         rel="noopener noreferrer"
-                                        href="/"
+                                        href="//#"
                                         target="_blank"
                                     />
                                 </li>
