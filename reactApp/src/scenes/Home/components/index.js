@@ -5,29 +5,18 @@ import YearsTable from './YearsTable';
 
 export default class HomeComponent extends Component {
 
-    constructor(props){
-        super(props);
-
-        this.sortByFilter = this.sortByFilter.bind(this);
-        this.addToYearsTable = this.addToYearsTable.bind(this);
-        this.removeItem = this.removeItem.bind(this);
-    }
-
-    sortByFilter(){
-        this.props.sortByFilter();
-    }
-
-    addToYearsTable(data){
-        this.props.addToYearsTable(data);
-    }
-
-    removeItem(data){
-        this.props.removeItem(data);
-    }
-
     render() {
 
-        const {skills, workExperience, education, yearsTable} = this.props;
+        const {
+            skills,
+            workExperience,
+            education,
+            yearsTable,
+            sortByFilter,
+            addToYearsTable,
+            removeItem,
+            bubbleSort
+        } = this.props;
 
         return (
             <Fragment>
@@ -91,9 +80,10 @@ export default class HomeComponent extends Component {
                         <h2>Years</h2>
                         <YearsTable
                             data={yearsTable}
-                            sortByFilter={this.sortByFilter}
-                            addToYearsTable={this.addToYearsTable}
-                            removeItem={this.removeItem}
+                            sortByFilter={sortByFilter}
+                            bubbleSort={bubbleSort}
+                            addToYearsTable={addToYearsTable}
+                            removeItem={removeItem}
                         />
                     </div>
                 </article>

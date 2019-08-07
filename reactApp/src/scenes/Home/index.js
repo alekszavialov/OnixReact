@@ -117,14 +117,9 @@ export default class Home extends Component {
             ]
         };
 
-        this.sortByFilter = this.sortByFilter.bind(this);
-        this.sort = this.sort.bind(this);
-        this.addToYearsTable = this.addToYearsTable.bind(this);
-        this.removeItem = this.removeItem.bind(this);
-        this.filterElements = this.filterElements.bind(this);
     }
 
-    sortByFilter() {
+    sortByFilter = () => {
         const {yearsTable} = this.state;
         const filteredYears = yearsTable.sort((a, b) => {
             if (a[0] === b[0])
@@ -134,38 +129,59 @@ export default class Home extends Component {
         this.setState({
             yearsTable: filteredYears
         })
-    }
+    };
 
-    sort() {
+    bubbleSort = () => {
+        const {yearsTable} = this.state;
+        let temp = true;
+        while (temp) {
+            temp = false;
+            for (let i = 0; i < yearsTable.length - 1; i++) {
+                console.log(yearsTable, 'table', i);
+                if (yearsTable[i][0] > yearsTable[i + 1][0]) {
+                    temp = yearsTable[i];
+                    yearsTable[i] = yearsTable[i + 1];
+                    yearsTable[i + 1] = temp;
+                }
+            }
+        }
+        this.setState({
+            yearsTable
+        })
+    };
+
+    sort = () => {
         const {yearsTable} = this.state;
         const filteredYears = yearsTable.sort();
         this.setState({
             yearsTable: filteredYears
         })
-    }
+    };
 
-    filterElements(year, title) {
+    filterElements = (year, title) => {
         const {yearsTable} = this.state;
         return yearsTable.filter(([itemYear, itemTitle]) => !(itemYear === year && itemTitle === title))
-    }
+    };
 
-    addToYearsTable([year, title]) {
+    addToYearsTable = ([year, title]) => {
         const {yearsTable} = this.state;
-        if (!year || title.trim() === '' || this.filterElements(year, title).length !== yearsTable.length)
+        if (!year || title.trim() === '' || this.filterElements(year, title).length !== yearsTable.length) {
             return;
+        }
         this.setState({
             yearsTable: [...yearsTable, [year, title]]
         })
-    }
+    };
 
-    removeItem([year, title]) {
-        if (!year || title.trim() === '')
+    removeItem = ([year, title]) => {
+        if (!year || title.trim() === ''){
             return;
+        }
         const newArray = this.filterElements(year, title);
         this.setState({
             yearsTable: newArray
         })
-    }
+    };
 
 
     render() {
@@ -180,6 +196,7 @@ export default class Home extends Component {
                 yearsTable={yearsTable}
 
                 sortByFilter={this.sortByFilter}
+                bubbleSort={this.bubbleSort}
                 addToYearsTable={this.addToYearsTable}
                 removeItem={this.removeItem}
             />

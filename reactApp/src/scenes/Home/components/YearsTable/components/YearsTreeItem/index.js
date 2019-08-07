@@ -1,41 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import './styles.css';
 
-export default class YearsTreeItem extends Component {
+export default function YearsTreeItem({year, title, removeItem}) {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            year: props.data[0],
-            title: props.data[1]
-        };
-        this.removeItem = this.removeItem.bind(this);
-    }
+    return (
+        <tr>
+            <td>{year}</td>
+            <td>{title}</td>
+            <td
+                className="remove"
+            >
+                <button onClick={() => removeItem([year, title])}>
+                    Click to remove
+                </button>
+            </td>
 
-    removeItem(){
-        const {year, title} = this.state;
-        this.props.removeItem([year, title])
-    }
-
-
-    render() {
-        const {year, title} = this.state;
-        return (
-            <tr>
-                    <td>{year}</td>
-                    <td>{title}</td>
-                    <td
-                        className="remove"
-                    >
-                        <button onClick={this.removeItem}>
-                            Click to remove
-                        </button>
-                    </td>
-
-            </tr>
-        )
-    }
-
-
+        </tr>
+    )
 }

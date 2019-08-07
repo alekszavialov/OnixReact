@@ -12,44 +12,29 @@ export default class YearTree extends Component {
             title: ''
         };
 
-        this.changeYear = this.changeYear.bind(this);
-        this.changeTitle = this.changeTitle.bind(this);
-
-        this.sortByFilter = this.sortByFilter.bind(this);
-        this.addToYearsTable = this.addToYearsTable.bind(this);
-        this.removeItem = this.removeItem.bind(this);
-
     }
 
-    sortByFilter() {
-        this.props.sortByFilter();
-    }
-
-    addToYearsTable(e) {
+    addToYearsTable = (e) => {
         e.preventDefault();
         const {year, title} = this.state;
         this.props.addToYearsTable([parseInt(year), title]);
-    }
+    };
 
-    removeItem(data) {
-        this.props.removeItem(data);
-    }
-
-    changeYear(event) {
-        const value = parseInt(event.target.value);
+    changeYear = (e) => {
+        const value = parseInt(e.target.value);
         this.setState({
             year: value
         });
-    }
+    };
 
-    changeTitle(title) {
+    changeTitle = (title) => {
         this.setState({
             title: title.target.value
         });
-    }
+    };
 
     render() {
-        const {data} = this.props;
+        const {data, removeItem, sortByFilter, bubbleSort} = this.props;
         const {year, title} = this.state;
         return (
             <Fragment>
@@ -72,16 +57,20 @@ export default class YearTree extends Component {
                     <button>Add</button>
                 </form>
                 <div className="filterTree">
-                    <button onClick={this.sortByFilter}>Filter tree</button>
+                    <button onClick={sortByFilter}>Filter tree</button>
+                </div>
+                <div className="filterTree">
+                    <button onClick={bubbleSort}>Bubble sort</button>
                 </div>
                 <table className="yearsTree">
                     <tbody>
                     {
-                        data.map((item, id) =>
+                        data.map(([year, title]) =>
                             <YearsTreeItem
-                                key={item[0] + id}
-                                data={item}
-                                removeItem={this.removeItem}
+                                key={year + title}
+                                year={year}
+                                title={title}
+                                removeItem={removeItem}
                             />
                         )
                     }
