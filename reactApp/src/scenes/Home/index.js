@@ -137,7 +137,6 @@ export default class Home extends Component {
         while (temp) {
             temp = false;
             for (let i = 0; i < yearsTable.length - 1; i++) {
-                console.log(yearsTable, 'table', i);
                 if (yearsTable[i][0] > yearsTable[i + 1][0]) {
                     temp = yearsTable[i];
                     yearsTable[i] = yearsTable[i + 1];
