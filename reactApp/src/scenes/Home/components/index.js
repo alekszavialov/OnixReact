@@ -11,7 +11,7 @@ export default class HomeComponent extends Component {
             skills,
             workExperience,
             education,
-            yearsTable,
+            objectTable,
             sortByFilter,
             addToYearsTable,
             removeItem,
@@ -79,7 +79,7 @@ export default class HomeComponent extends Component {
                     <div className="container">
                         <h2>Years</h2>
                         <YearsTable
-                            data={yearsTable}
+                            data={objectTable}
                             sortByFilter={sortByFilter}
                             bubbleSort={bubbleSort}
                             addToYearsTable={addToYearsTable}

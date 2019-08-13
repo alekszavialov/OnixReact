@@ -114,21 +114,71 @@ export default class Home extends Component {
                 [2009, 'Kirovograd Cybernetics and Technology College'],
                 [2016, 'Central Ukrainian National Technical University'],
                 [2011, 'Started work in VCTService']
-            ]
+            ],
+            objectTable: {
+                1: {
+                    year: "1993",
+                    title: "Birth"
+                },
+                2: {
+                    year: "2000",
+                    title: "Elementary school"
+                },
+                3: {
+                    year: "2004",
+                    title: "Middle school"
+                },
+                4: {
+                    year: "2009",
+                    title: "Kirovograd Cybernetics and Technology College"
+                },
+                5: {
+                    year: "2016",
+                    title: "Central Ukrainian National Technical University"
+                },
+                6: {
+                    year: "2011",
+                    title: "Started work in VCTService"
+                }
+            }
         };
 
     }
 
     sortByFilter = () => {
-        const {yearsTable} = this.state;
-        const filteredYears = yearsTable.sort((a, b) => {
-            if (a[0] === b[0])
-                return 0;
-            return (a[0] < b[0]) ? -1 : 1;
+        const {objectTable} = this.state;
+        console.log(objectTable);
+        console.log(Object.keys(objectTable));
+        console.log(Object.keys(objectTable).map(parseFloat));
+        const filteredYears = Object.entries(objectTable).sort(([aKey, {year : aYear}],[bKey, {year : bYear}]) => {
+            return aYear - bYear;
         });
-        this.setState({
-            yearsTable: filteredYears
-        })
+        console.log(filteredYears);
+        let newArray = filteredYears.reduce( (acc, [key, value]) => {
+            console.log(key);
+            return {
+                ...acc,
+                [key] : {
+                    ...value
+                }
+            }
+        }, {});
+        console.log(newArray);
+
+
+        //     .reduceRight((acc,key) => {
+        //     console.log(key);
+        //     return {
+        //         ...acc,
+        //         [key] : {
+        //             ...objectTable[key]
+        //         }
+        //     }
+        // }, {});
+        // console.log(filteredYears);
+        // this.setState({
+        //     yearsTable: filteredYears
+        // })
     };
 
     bubbleSort = () => {
@@ -150,8 +200,16 @@ export default class Home extends Component {
     };
 
     sort = () => {
-        const {yearsTable} = this.state;
-        const filteredYears = yearsTable.sort();
+        const {objectTable} = this.state;
+        const filteredYears = Object.keys(objectTable).reduceRight((acc,key) => {
+            return {
+                ...acc,
+                [key] : {
+                    ...objectTable[key]
+                }
+            }
+        }, {});
+        console.log(filteredYears);
         this.setState({
             yearsTable: filteredYears
         })
@@ -162,30 +220,36 @@ export default class Home extends Component {
         return yearsTable.filter(([itemYear, itemTitle]) => !(itemYear === year && itemTitle === title))
     };
 
-    addToYearsTable = ([year, title]) => {
-        const {yearsTable} = this.state;
-        if (!year || title.trim() === '' || this.filterElements(year, title).length !== yearsTable.length) {
+    addToYearsTable = (year, title) => {
+        if (!year || title.trim() === '') {
             return;
         }
+        const {objectTable} = this.state;
+        const objectTableKeys = Object.keys(objectTable);
+        const id = Math.max(...objectTableKeys) + 1;
         this.setState({
-            yearsTable: [...yearsTable, [year, title]]
-        })
+            objectTable: {
+                ...objectTable,
+                [id]: {
+                    year: year.toString(),
+                    title: title
+                }
+            }
+        }, () => console.log(this.state.objectTable))
     };
 
-    removeItem = ([year, title]) => {
-        if (!year || title.trim() === ''){
-            return;
-        }
-        const newArray = this.filterElements(year, title);
+    removeItem = (itemsKey) => {
+        const {objectTable} = this.state;
+        const {[itemsKey]: deletedKey, ...newArray} = objectTable;
         this.setState({
-            yearsTable: newArray
+            objectTable: newArray
         })
     };
 
 
     render() {
 
-        const {skills, workExperience, education, yearsTable} = this.state;
+        const {skills, workExperience, education, yearsTable, objectTable} = this.state;
 
         return (
             <HomeComponent
@@ -193,6 +257,7 @@ export default class Home extends Component {
                 education={education}
                 workExperience={workExperience}
                 yearsTable={yearsTable}
+                objectTable={objectTable}
 
                 sortByFilter={this.sortByFilter}
                 bubbleSort={this.bubbleSort}

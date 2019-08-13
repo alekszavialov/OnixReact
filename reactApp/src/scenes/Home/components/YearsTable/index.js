@@ -17,7 +17,7 @@ export default class YearTree extends Component {
     addToYearsTable = (e) => {
         e.preventDefault();
         const {year, title} = this.state;
-        this.props.addToYearsTable([parseInt(year), title]);
+        this.props.addToYearsTable(year, title);
     };
 
     changeYear = (e) => {
@@ -33,8 +33,28 @@ export default class YearTree extends Component {
         });
     };
 
+    fillData = () => {
+        const {data, removeItem} = this.props;
+        let dataArray = [];
+        for (let key in data){
+            if( data.hasOwnProperty( key ) ) {
+                dataArray = [
+                    ...dataArray,
+                    <YearsTreeItem
+                        key={key}
+                        itemKey={key}
+                        year={data[key].year}
+                        title={data[key].title}
+                        removeItem={removeItem}
+                    />
+                ]
+            }
+        }
+        return dataArray;
+    };
+
     render() {
-        const {data, removeItem, sortByFilter, bubbleSort} = this.props;
+        const {sortByFilter, bubbleSort} = this.props;
         const {year, title} = this.state;
         return (
             <Fragment>
@@ -65,14 +85,7 @@ export default class YearTree extends Component {
                 <table className="yearsTree">
                     <tbody>
                     {
-                        data.map(([year, title]) =>
-                            <YearsTreeItem
-                                key={year + title}
-                                year={year}
-                                title={title}
-                                removeItem={removeItem}
-                            />
-                        )
+                        this.fillData()
                     }
                     </tbody>
                 </table>
