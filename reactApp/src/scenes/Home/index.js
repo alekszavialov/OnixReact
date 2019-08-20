@@ -107,42 +107,48 @@ export default class Home extends Component {
                     description: "Lorem ipsum dolor sit amet, consectetur et incididunt ut labore et dolorea."
                 },
             ],
-            objectTable: {
-                1: {
-                    year: "1993",
-                    title: "Birth"
-                },
-                2: {
-                    year: "2000",
-                    title: "Elementary school"
-                },
-                3: {
-                    year: "2004",
-                    title: "Middle school"
-                },
-                4: {
-                    year: "2009",
-                    title: "Kirovograd Cybernetics and Technology College"
-                },
-                5: {
-                    year: "2016",
-                    title: "Central Ukrainian National Technical University"
-                },
-                6: {
-                    year: "2011",
-                    title: "Started work in VCTService"
-                }
-            }
+            objectTable: null,
+            dataURL: 'https://jsonplaceholder.typicode.com/users'
         };
 
     }
 
+    componentDidMount() {
+        const {dataURL} = this.state;
+        this.fetchData(dataURL);
+    }
+
+    fetchData = (url) => {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => this.mutateAndSetData(data));
+    };
+
+    mutateAndSetData = (data) => {
+        const mutatedData = data.reduce((acc, item) => {
+            return {
+                ...acc,
+                [item.id]: {
+                    phone: item.phone,
+                    name: item.name
+                }
+            }
+        }, {});
+        this.setState({
+            objectTable: mutatedData
+        })
+    };
+
     sortByFilter = () => {
         const {objectTable} = this.state;
-        const filteredYears = Object.entries(objectTable).sort(([aKey, {year : aYear}],[bKey, {year : bYear}]) => {
-            return aYear - bYear;
+        const filteredYears = Object.entries(objectTable).sort(([aKey, {name: aName}], [bKey, {name: bName}]) => {
+            return this.stringCharCodeValue(aName) - this.stringCharCodeValue(bName);
         });
         this.setFilteredItems(filteredYears);
+    };
+
+    stringCharCodeValue = (line) => {
+        return line.split().reduce( (acc, item) => acc + item.charCodeAt(0), 0);
     };
 
     bubbleSort = () => {
@@ -152,7 +158,7 @@ export default class Home extends Component {
         while (temp) {
             temp = false;
             for (let i = 0; i < filteredYears.length - 1; i++) {
-                if (filteredYears[i][1].year > filteredYears[i + 1][1].year) {
+                if (this.stringCharCodeValue(filteredYears[i][1].name) > this.stringCharCodeValue(filteredYears[i + 1][1].name)) {
                     temp = filteredYears[i];
                     filteredYears[i] = filteredYears[i + 1];
                     filteredYears[i + 1] = temp;
@@ -163,12 +169,13 @@ export default class Home extends Component {
     };
 
     setFilteredItems = (array) => {
+        console.log(array);
         const {objectTable} = this.state;
         const keys = Object.keys(objectTable);
-        const filteredYears = array.reduce( (acc, [key, value], index) => {
+        const filteredYears = array.reduce((acc, [key, value], index) => {
             return {
                 ...acc,
-                [keys[index]] : {
+                [keys[index]]: {
                     ...value
                 }
             }
@@ -178,8 +185,8 @@ export default class Home extends Component {
         })
     };
 
-    addToYearsTable = (year, title) => {
-        if (!year || title.trim() === '') {
+    addToYearsTable = (phone, name) => {
+        if (phone.trim() === '' || name.trim() === '') {
             return;
         }
         const {objectTable} = this.state;
@@ -189,11 +196,11 @@ export default class Home extends Component {
             objectTable: {
                 ...objectTable,
                 [id]: {
-                    year: year.toString(),
-                    title: title
+                    phone,
+                    name
                 }
             }
-        });
+        }, () => console.log(this.state.objectTable));
     };
 
     removeItem = (itemsKey) => {

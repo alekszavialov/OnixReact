@@ -8,28 +8,27 @@ export default class YearTree extends Component {
         super(props);
 
         this.state = {
-            year: '',
-            title: ''
+            phone: '',
+            name: ''
         };
 
     }
 
     addToYearsTable = (e) => {
         e.preventDefault();
-        const {year, title} = this.state;
-        this.props.addToYearsTable(year, title);
+        const {phone, name} = this.state;
+        this.props.addToYearsTable(phone, name);
     };
 
     changeYear = (e) => {
-        const value = parseInt(e.target.value);
         this.setState({
-            year: value
+            phone: e.target.value
         });
     };
 
     changeTitle = (title) => {
         this.setState({
-            title: title.target.value
+            name: title.target.value
         });
     };
 
@@ -43,8 +42,8 @@ export default class YearTree extends Component {
                     <YearsTreeItem
                         key={key}
                         itemKey={key}
-                        year={data[key].year}
-                        title={data[key].title}
+                        phone={data[key].phone}
+                        name={data[key].name}
                         removeItem={removeItem}
                     />
                 ]
@@ -55,7 +54,7 @@ export default class YearTree extends Component {
 
     render() {
         const {sortByFilter, bubbleSort} = this.props;
-        const {year, title} = this.state;
+        const {name, phone} = this.state;
         return (
             <Fragment>
                 <form
@@ -65,22 +64,22 @@ export default class YearTree extends Component {
                     <input
                         type="text"
                         onChange={this.changeYear}
-                        placeholder='Write some year'
-                        value={year}
+                        placeholder='Write some phone number'
+                        value={phone}
                     />
                     <input
                         type="text"
                         onChange={this.changeTitle}
-                        placeholder='Write some title'
-                        value={title}
+                        placeholder='Write some name'
+                        value={name}
                     />
                     <button>Add</button>
                 </form>
                 <div className="filterTree">
-                    <button onClick={sortByFilter}>Filter tree</button>
+                    <button onClick={sortByFilter}>Filter tree by name</button>
                 </div>
                 <div className="filterTree">
-                    <button onClick={bubbleSort}>Bubble sort</button>
+                    <button onClick={bubbleSort}>Bubble sort by name</button>
                 </div>
                 <table className="yearsTree">
                     <tbody>

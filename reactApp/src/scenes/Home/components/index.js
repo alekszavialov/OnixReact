@@ -75,18 +75,23 @@ export default class HomeComponent extends Component {
 
                     </div>
                 </article>
-                <article id="table">
-                    <div className="container">
-                        <h2>Years</h2>
-                        <YearsTable
-                            data={objectTable}
-                            sortByFilter={sortByFilter}
-                            bubbleSort={bubbleSort}
-                            addToYearsTable={addToYearsTable}
-                            removeItem={removeItem}
-                        />
-                    </div>
-                </article>
+                {
+                    objectTable &&
+                    (
+                        <article id="table">
+                            <div className="container">
+                                <h2>Years</h2>
+                                <YearsTable
+                                    data={objectTable}
+                                    sortByFilter={sortByFilter}
+                                    bubbleSort={bubbleSort}
+                                    addToYearsTable={addToYearsTable}
+                                    removeItem={removeItem}
+                                />
+                            </div>
+                        </article>
+                    )
+                }
                 <article id="workExperience">
                     <div className="container separator">
                         <h2>Work Experience</h2>

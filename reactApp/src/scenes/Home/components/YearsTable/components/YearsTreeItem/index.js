@@ -2,12 +2,12 @@ import React from 'react';
 
 import './styles.css';
 
-export default function YearsTreeItem({itemKey, year, title, removeItem}) {
+export default function YearsTreeItem({itemKey, phone, name, removeItem}) {
 
     return (
         <tr>
-            <td>{year}</td>
-            <td>{title}</td>
+            <td>{phone}</td>
+            <td>{name}</td>
             <td
                 className="remove"
             >
