@@ -33,7 +33,7 @@ export default class YearTree extends Component {
     };
 
     fillData = () => {
-        const {data, removeItem} = this.props;
+        const {data, removeItem, handleActive, onDragStart, onDragOver, onDragEnd} = this.props;
         let dataArray = [];
         for (let key in data){
             if( data.hasOwnProperty( key ) ) {
@@ -44,7 +44,12 @@ export default class YearTree extends Component {
                         itemKey={key}
                         phone={data[key].phone}
                         name={data[key].name}
+                        isActive={data[key].isActive}
                         removeItem={removeItem}
+                        handleActive={handleActive}
+                        onDragStart={onDragStart}
+                        onDragOver={onDragOver}
+                        onDragEnd={onDragEnd}
                     />
                 ]
             }

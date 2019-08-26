@@ -980,12 +980,59 @@ footer {
   padding: 10px;
   width: 100%;
 }
+.yearsTree tr {
+  cursor: pointer;
+}
 .yearsTree tr, .yearsTree td {
   border: 1px solid #000;
 }
 .yearsTree td {
   padding: 5px;
   text-align: center;
+}
+.yearsTree .active-item td {
+  background: #FF0000;
+}
+
+.lds-hourglass {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 6px;
+  box-sizing: border-box;
+  border: 26px solid #ffd020;
+  border-color: #FFD020 transparent #FFD020 transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+.loading-error {
+  text-align: center;
+  color: red;
+}
+.loading-error:after {
+  display: none;
 }
 
 @media only screen and (max-width: 1200px) {

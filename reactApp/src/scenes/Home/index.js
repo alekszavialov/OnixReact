@@ -108,29 +108,45 @@ export default class Home extends Component {
                 },
             ],
             objectTable: null,
-            dataURL: 'https://jsonplaceholder.typicode.com/users'
+            errorLoadingData: null,
+            dragged: {
+                itemID: null,
+                overItemID: null
+            }
         };
 
     }
 
+
     componentDidMount() {
-        const {dataURL} = this.state;
-        this.fetchData(dataURL);
+        this.fetchData(process.env.REACT_APP_API_URL);
     }
 
     fetchData = (url) => {
         fetch(url)
-            .then(response => response.json())
-            .then(data => this.mutateAndSetData(data));
+            .then((response) => {
+                if (response.ok) {
+                    return response.json()
+                }
+                throw Error("Oops, try again later")
+            })
+            .then(data => this.mutateAndSetData(data))
+            .catch(error =>
+                this.setState({
+                    errorLoadingData: error.message
+                })
+            )
     };
 
     mutateAndSetData = (data) => {
+        console.log(data);
         const mutatedData = data.reduce((acc, item) => {
             return {
                 ...acc,
                 [item.id]: {
                     phone: item.phone,
-                    name: item.name
+                    name: item.name,
+                    isActive: false
                 }
             }
         }, {});
@@ -148,7 +164,7 @@ export default class Home extends Component {
     };
 
     stringCharCodeValue = (line) => {
-        return line.split().reduce( (acc, item) => acc + item.charCodeAt(0), 0);
+        return line.split().reduce((acc, item) => acc + item.charCodeAt(0), 0);
     };
 
     bubbleSort = () => {
@@ -169,7 +185,6 @@ export default class Home extends Component {
     };
 
     setFilteredItems = (array) => {
-        console.log(array);
         const {objectTable} = this.state;
         const keys = Object.keys(objectTable);
         const filteredYears = array.reduce((acc, [key, value], index) => {
@@ -197,7 +212,8 @@ export default class Home extends Component {
                 ...objectTable,
                 [id]: {
                     phone,
-                    name
+                    name,
+                    isActive: true
                 }
             }
         }, () => console.log(this.state.objectTable));
@@ -211,22 +227,92 @@ export default class Home extends Component {
         })
     };
 
+    handleActive = (itemKey, e) => {
+        if (!e.ctrlKey && !e.altKey) {
+            return;
+        }
+        const {objectTable} = this.state;
+        const {[itemKey]: item} = objectTable;
+        if (e.ctrlKey && item.isActive) {
+            return;
+        }
+        if (e.altKey && !item.isActive) {
+            return;
+        }
+        this.setState({
+            objectTable: {
+                ...objectTable,
+                [itemKey]: {
+                    ...item,
+                    isActive: !item.isActive
+                }
+            }
+        })
+    };
+
+    onDragStart = (e, itemID) => {
+        const {dragged} = this.state;
+        this.setState({
+            dragged: {
+                ...dragged,
+                itemID
+            }
+        });
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/html", e.target);
+    };
+
+    onDragOver = (overItemID) => {
+        const {dragged} = this.state;
+        this.setState(
+            {
+                dragged: {
+                    ...dragged,
+                    overItemID
+                }
+            }
+        )
+    };
+
+    onDragEnd = () => {
+        const {dragged} = this.state;
+        if (dragged.itemID === dragged.overItemID) {
+            return;
+        }
+        const {objectTable} = this.state;
+        const newDraggedItem = {[dragged.itemID]: {...objectTable[dragged.overItemID]}};
+        const newDraggedOverItem = {[dragged.overItemID]: {...objectTable[dragged.itemID]}};
+        this.setState({
+            objectTable: {
+                ...objectTable,
+                ...newDraggedItem,
+                ...newDraggedOverItem
+            },
+            dragged: {
+                overItemID: null,
+                itemID: null
+            }
+        });
+    };
 
     render() {
-
-        const {skills, workExperience, education, objectTable} = this.state;
-
+        const {skills, workExperience, education, objectTable, errorLoadingData} = this.state;
         return (
             <HomeComponent
                 skills={skills}
                 education={education}
                 workExperience={workExperience}
                 objectTable={objectTable}
+                errorLoadingData={errorLoadingData}
 
                 sortByFilter={this.sortByFilter}
                 bubbleSort={this.bubbleSort}
                 addToYearsTable={this.addToYearsTable}
                 removeItem={this.removeItem}
+                handleActive={this.handleActive}
+                onDragStart={this.onDragStart}
+                onDragOver={this.onDragOver}
+                onDragEnd={this.onDragEnd}
             />
         )
     }

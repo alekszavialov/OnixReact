@@ -12,12 +12,16 @@ export default class HomeComponent extends Component {
             workExperience,
             education,
             objectTable,
+            errorLoadingData,
             sortByFilter,
             addToYearsTable,
             removeItem,
-            bubbleSort
+            bubbleSort,
+            handleActive,
+            onDragStart,
+            onDragOver,
+            onDragEnd
         } = this.props;
-
         return (
             <Fragment>
                 <article id="aboutMe">
@@ -75,23 +79,32 @@ export default class HomeComponent extends Component {
 
                     </div>
                 </article>
-                {
-                    objectTable &&
-                    (
-                        <article id="table">
-                            <div className="container">
-                                <h2>Years</h2>
-                                <YearsTable
-                                    data={objectTable}
-                                    sortByFilter={sortByFilter}
-                                    bubbleSort={bubbleSort}
-                                    addToYearsTable={addToYearsTable}
-                                    removeItem={removeItem}
-                                />
-                            </div>
-                        </article>
-                    )
-                }
+                <article id="table">
+                    {
+                        objectTable ?
+                            (
+                                <div className="container">
+                                    <h2>Years</h2>
+                                    <h3>Press CTRL + Mouse Left to activate element</h3>
+                                    <h3>Press ALT + Mouse Left to deactivate element</h3>
+                                    <YearsTable
+                                        data={objectTable}
+                                        sortByFilter={sortByFilter}
+                                        bubbleSort={bubbleSort}
+                                        addToYearsTable={addToYearsTable}
+                                        removeItem={removeItem}
+                                        handleActive={handleActive}
+                                        onDragStart={onDragStart}
+                                        onDragOver={onDragOver}
+                                        onDragEnd={onDragEnd}
+                                    />
+                                </div>
+                            ) :
+                            errorLoadingData ?
+                                <h2 className="loading-error">{errorLoadingData}</h2> :
+                                <div className="lds-hourglass"/>
+                    }
+                </article>
                 <article id="workExperience">
                     <div className="container separator">
                         <h2>Work Experience</h2>
