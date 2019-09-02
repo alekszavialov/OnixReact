@@ -85,7 +85,7 @@ export default class HomeComponent extends Component {
                             (
                                 <div className="container">
                                     <h2>Years</h2>
-                                    <h3>Press CTRL + Mouse Left to activate element</h3>
+                                    <h3>Press CTRL (CMD) + Mouse Left to activate element</h3>
                                     <h3>Press ALT + Mouse Left to deactivate element</h3>
                                     <YearsTable
                                         data={objectTable}

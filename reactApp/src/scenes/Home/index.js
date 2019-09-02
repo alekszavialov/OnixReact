@@ -228,12 +228,12 @@ export default class Home extends Component {
     };
 
     handleActive = (itemKey, e) => {
-        if (!e.ctrlKey && !e.altKey) {
+        if (!e.ctrlKey && !e.altKey && !e.metaKey) {
             return;
         }
         const {objectTable} = this.state;
         const {[itemKey]: item} = objectTable;
-        if (e.ctrlKey && item.isActive) {
+        if ((e.ctrlKey || e.metaKey) && item.isActive) {
             return;
         }
         if (e.altKey && !item.isActive) {
