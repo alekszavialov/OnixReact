@@ -5,28 +5,24 @@ export default class Header extends Component {
 
     constructor(props){
         super(props);
-
         this.state = {
             menuIsOpen: false
         };
-
-        this.toggleMenu = this.toggleMenu.bind(this);
     }
 
-    toggleMenu(){
+    toggleMenu = () => {
         this.setState({
             menuIsOpen: !this.state.menuIsOpen
         })
-    }
+    };
 
     render() {
-
         const {menuIsOpen} = this.state;
-
+        const menuListClass = menuIsOpen ? "open" : "hidden";
         return (
             <HeaderComponent
                 toggleMenu={this.toggleMenu}
-                menuIsOpen={menuIsOpen}
+                menuListClass={menuListClass}
             />
         )
     }

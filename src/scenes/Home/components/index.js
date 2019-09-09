@@ -1,12 +1,28 @@
 import React, {Component, Fragment} from 'react';
+import PropTypes from 'prop-types';
 
 import HomeTree from './homeTree';
 import YearsTable from './YearsTable';
 
 export default class HomeComponent extends Component {
 
-    render() {
+    static propTypes = {
+        skills: PropTypes.array,
+        workExperience: PropTypes.array,
+        education: PropTypes.array,
+        objectTable: PropTypes.object,
+        errorLoadingData: PropTypes.any,
+        sortByFilter: PropTypes.func,
+        addToYearsTable: PropTypes.func,
+        removeItem : PropTypes.func,
+        bubbleSort : PropTypes.func,
+        handleActive : PropTypes.func,
+        onDragStart : PropTypes.func,
+        onDragOver : PropTypes.func,
+        onDragEnd : PropTypes.func,
+    };
 
+    render() {
         const {
             skills,
             workExperience,

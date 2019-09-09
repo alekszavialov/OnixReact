@@ -117,7 +117,6 @@ export default class Home extends Component {
 
     }
 
-
     componentDidMount() {
         this.fetchData(process.env.REACT_APP_API_URL);
     }
@@ -139,7 +138,6 @@ export default class Home extends Component {
     };
 
     mutateAndSetData = (data) => {
-        console.log(data);
         const mutatedData = data.reduce((acc, item) => {
             return {
                 ...acc,
@@ -181,7 +179,28 @@ export default class Home extends Component {
                 }
             }
         }
-        this.setFilteredItems(filteredYears);
+        this.setFilteredItems(
+            this.bubbleSortFunction(
+                filteredYears,
+                (array, variable) => this.stringCharCodeValue(array[variable][1].name)
+            )
+        );
+    };
+
+    bubbleSortFunction = (data, condition) => {
+        const sortedData = data;
+        let temp = true;
+        while (temp) {
+            temp = false;
+            for (let i = 0; i < sortedData.length - 1; i++) {
+                if (condition(sortedData, i) > condition(sortedData, i + 1)) {
+                    temp = sortedData[i];
+                    sortedData[i] = sortedData[i + 1];
+                    sortedData[i + 1] = temp;
+                }
+            }
+        }
+        return sortedData;
     };
 
     setFilteredItems = (array) => {
@@ -216,7 +235,7 @@ export default class Home extends Component {
                     isActive: true
                 }
             }
-        }, () => console.log(this.state.objectTable));
+        });
     };
 
     removeItem = (itemsKey) => {
@@ -228,26 +247,44 @@ export default class Home extends Component {
     };
 
     handleActive = (itemKey, e) => {
-        if (!e.ctrlKey && !e.altKey && !e.metaKey) {
-            return;
-        }
-        const {objectTable} = this.state;
-        const {[itemKey]: item} = objectTable;
-        if ((e.ctrlKey || e.metaKey) && item.isActive) {
-            return;
-        }
-        if (e.altKey && !item.isActive) {
-            return;
-        }
-        this.setState({
-            objectTable: {
-                ...objectTable,
-                [itemKey]: {
-                    ...item,
-                    isActive: !item.isActive
-                }
+        if (e.ctrlKey || e.altKey || e.metaKey) {
+            const {objectTable} = this.state;
+            const {[itemKey]: item} = objectTable;
+            if (
+                ((e.ctrlKey || e.metaKey) && !item.isActive) ||
+                (e.altKey && item.isActive)
+            ) {
+                this.setState({
+                    objectTable: {
+                        ...objectTable,
+                        [itemKey]: {
+                            ...item,
+                            isActive: !item.isActive
+                        }
+                    }
+                })
             }
-        })
+        }
+        // if (!e.ctrlKey && !e.altKey && !e.metaKey) {
+        //     return;
+        // }
+        // const {objectTable} = this.state;
+        // const {[itemKey]: item} = objectTable;
+        // if ((e.ctrlKey || e.metaKey) && item.isActive) {
+        //     return;
+        // }
+        // if (e.altKey && !item.isActive) {
+        //     return;
+        // }
+        // this.setState({
+        //     objectTable: {
+        //         ...objectTable,
+        //         [itemKey]: {
+        //             ...item,
+        //             isActive: !item.isActive
+        //         }
+        //     }
+        // })
     };
 
     onDragStart = (e, itemID) => {

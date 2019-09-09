@@ -1,12 +1,22 @@
 import React, {Component, Fragment} from 'react';
+import PropTypes from 'prop-types';
 
 import YearsTreeItem from './components/YearsTreeItem'
 
 export default class YearTree extends Component {
 
+    static propTypes = {
+        skills: PropTypes.array,
+        data: PropTypes.object,
+        removeItem: PropTypes.func,
+        handleActive: PropTypes.func,
+        onDragStart: PropTypes.func,
+        onDragOver: PropTypes.func,
+        onDragEnd: PropTypes.func,
+    };
+
     constructor(props) {
         super(props);
-
         this.state = {
             phone: '',
             name: ''
@@ -35,8 +45,8 @@ export default class YearTree extends Component {
     fillData = () => {
         const {data, removeItem, handleActive, onDragStart, onDragOver, onDragEnd} = this.props;
         let dataArray = [];
-        for (let key in data){
-            if( data.hasOwnProperty( key ) ) {
+        for (let key in data) {
+            if (data.hasOwnProperty(key)) {
                 dataArray = [
                     ...dataArray,
                     <YearsTreeItem

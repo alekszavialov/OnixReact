@@ -1,6 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './styles.css';
+
+YearsTreeItem.propTypes = {
+    itemKey: PropTypes.string,
+    phone: PropTypes.string,
+    name: PropTypes.string,
+    isActive: PropTypes.bool,
+    removeItem: PropTypes.func,
+    handleActive: PropTypes.func,
+    onDragStart: PropTypes.func,
+    onDragOver: PropTypes.func,
+    onDragEnd: PropTypes.func,
+};
 
 export default function YearsTreeItem(
     {
