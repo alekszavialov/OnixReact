@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import FooterView from './FooterView';
 
+import '../../../scss/components/layout/footer/footer.scss';
+
 export default class Footer extends Component {
 
     constructor(props) {

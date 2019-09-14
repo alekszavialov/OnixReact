@@ -1,0 +1,210 @@
+@import "../../../mixins.scss";
+
+footer {
+  padding: 107px 0 30px 0;
+}
+
+.footer-block {
+  @include display-flex();
+  @include flex-direction(row);
+  padding-bottom: 80px;
+}
+
+.footer-block-message-form, .footer-block-about {
+  @include flex(1 0 50%);
+  @include display-flex();
+}
+
+.footer-block-message-form {
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
+  position: relative;
+  padding-bottom: 35px;
+
+  input, textarea, button {
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  input {
+    margin: 0 15px 17px 0;
+  }
+
+  input, textarea {
+    border: 1px solid #353541;
+    width: 265px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  &:hover, &:active, &:focus {
+    border-color: #fb6470;
+  }
+
+  &:valid {
+    border-color: #4ded75;
+  }
+
+  @include placeholder {
+    font-family: Raleway-MediumItalic, sans-serif;
+    color: #3e3e3e;
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-family: Raleway-Medium, sans-serif;
+    margin-bottom: 20px;
+    @include flex(1 1 100%);
+  }
+
+  .footer-block-message-form-inputs, textarea {
+    @include flex(1 0 50%);
+  }
+
+  textarea {
+    height: 145px;
+    resize: none;
+    box-sizing: border-box;
+  }
+
+  button {
+    border: none;
+    opacity: 0.7;
+    font-size: 16px;
+    background: #fb6470;
+    font-family: Raleway-Medium, sans-serif;
+    color: #ffffff;
+    cursor: pointer;
+    text-transform: capitalize;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 8px 17px;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.footer-block-about {
+  @include flex-direction(column);
+  padding-left: 50px;
+  margin-left: 60px;
+
+  li {
+    @include display-flex();
+    @include flex-direction(row);
+    @include align-items(center);
+    margin-bottom: 30px;
+
+    &:last-child {
+      margin-bottom: 0
+    }
+  }
+}
+
+.footer-block-about-ico {
+  display: block;
+  position: relative;
+  margin-right: 40px;
+}
+
+.footer-block-about-info {
+  span, p {
+    color: #3e3e3e;
+  }
+
+  span {
+    display: block;
+    text-transform: capitalize;
+    font-size: 22px;
+    margin-bottom: 22px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+.footer-block-socials {
+  margin-top: 35px;
+  @include display-flex;
+  @include flex-direction(row);
+  @include justify-content(center);
+
+  li {
+    position: relative;
+    padding: 0 10px;
+    border-right: 1px solid #acacac;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
+
+.footer-block-copyright {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.ico-social, .ico-custom {
+  @include mask-size(cover);
+  @include mask-repeat(no-repeat);
+  @include mask-position(center);
+  background: #3e3e3e;
+  display: block;
+}
+
+.ico-custom {
+  width: 35px;
+  @include flex(0 0 35px);
+  height: 35px;
+}
+
+.ico-social {
+  width: 20px;
+  @include flex(0 0 20px);
+  height: 20px;
+  transition: all 0.3s ease;
+}
+
+.ico-home {
+  @include mask-image(url(../../../../assets/images/icons/custom/home-solid.svg));
+}
+
+.ico-email {
+  @include mask-image(url(../../../../assets/images/icons/custom/paper-plane-regular.svg));
+}
+
+.ico-phone {
+  @include mask-image(url(../../../../assets/images/icons/custom/phone-solid.svg));
+  transform: rotate(180deg)
+}
+
+.ico-dribble {
+  @include mask-image(url(../../../../assets/images/icons/social/dribbble-brands.svg));
+
+  &:hover {
+    background: #fb6470;
+  }
+}
+
+.ico-skype {
+  @include mask-image(url(../../../../assets/images/icons/social/skype-brands.svg));
+
+  &:hover {
+    background: #69d4d8;
+  }
+}
+
+.ico-twitter {
+  @include mask-image(url(../../../../assets/images/icons/social/twitter-brands.svg));
+
+  &:hover {
+    background: #69d4d8;
+  }
+}

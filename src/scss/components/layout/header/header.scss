@@ -1,0 +1,171 @@
+@import "../../../mixins.scss";
+
+header {
+  padding: 190px 0;
+}
+
+.header-block {
+  width: 325px;
+  margin-left: 540px;
+
+  ul {
+    @include display-flex();
+    margin-bottom: 45px;
+    @include flex-direction(row);
+    @include justify-content(center);
+
+    li {
+      position: relative;
+      margin-left: 15px;
+      @include display-flex();
+
+      &:first-child {
+        margin-left: 0
+      }
+
+      &:last-child {
+        p {
+          padding-right: 0;
+        }
+
+        &:after {
+          display: none
+        }
+      }
+
+      &:after {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 2px;
+        position: relative;
+        background: #ffffff;
+        right: 0;
+        border-left: 1px solid #8d8d92;
+        border-right: 1px solid #6f6f75;
+      }
+    }
+
+  }
+
+  p {
+    color: #ffffff;
+    padding-right: 14px;
+    font-size: 18px;
+  }
+
+  h1 {
+    margin: 0 0 14px 0;
+    text-align: center;
+    border: 4px solid #fb6470;
+    border-right: none;
+    border-left: none;
+    padding: 20px 46px;
+  }
+
+  h1, button {
+    text-transform: capitalize;
+  }
+
+  button {
+    display: block;
+    width: 170px;
+    height: 49px;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    background: #fb6470;
+    font-size: 22px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    &:hover {
+      color: #353541
+    }
+  }
+}
+
+.navigation-menu {
+  z-index: 1000;
+  top: 30px;
+  position: fixed;
+  padding: 10px;
+}
+
+#navigationMenuButton {
+  height: 33px;
+  z-index: 1000;
+  position: relative;
+  width: 56px;
+  @include display-flex();
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  @include flex-direction(column);
+
+  &:hover {
+    opacity: 1
+  }
+
+  span {
+    transition: all 0.3s ease;
+    position: relative;
+    display: block;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: #fb6470;
+    margin-bottom: 9px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#navigationMenuButton.open {
+  height: 56px;
+
+  span {
+    margin-bottom: 0;
+    top: 50%;
+
+    &:nth-child(1),
+    &:nth-child(3) {
+      position: absolute;
+      left: 50%;
+    }
+
+    &:nth-child(2) {
+      transform: scale(0);
+    }
+
+    &:nth-child(1) {
+      transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    }
+
+    &:nth-child(3) {
+      transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    }
+  }
+}
+
+#navigationMenuList {
+  width: 220px;
+  @include display-flex();
+  @include flex-direction(column);
+
+  li {
+    padding: 20px 10px;
+    border-bottom: 2px solid #282835;
+  }
+
+  a {
+    font-size: 22px;
+    color: #ffffff;
+  }
+}
+
+#navigationMenuList.hidden {
+  display: none;
+}
