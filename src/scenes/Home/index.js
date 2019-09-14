@@ -168,17 +168,6 @@ export default class Home extends Component {
     bubbleSort = () => {
         const {objectTable} = this.state;
         const filteredYears = Object.entries(objectTable);
-        let temp = true;
-        while (temp) {
-            temp = false;
-            for (let i = 0; i < filteredYears.length - 1; i++) {
-                if (this.stringCharCodeValue(filteredYears[i][1].name) > this.stringCharCodeValue(filteredYears[i + 1][1].name)) {
-                    temp = filteredYears[i];
-                    filteredYears[i] = filteredYears[i + 1];
-                    filteredYears[i + 1] = temp;
-                }
-            }
-        }
         this.setFilteredItems(
             this.bubbleSortFunction(
                 filteredYears,
