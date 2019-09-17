@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import HomeView from './HomeView';
 
+import '../../../scss/components/pages/Home/home.scss';
+
 export default class Home extends Component {
 
     constructor(props) {
@@ -111,6 +113,10 @@ export default class Home extends Component {
             dragged: {
                 itemID: null,
                 overItemID: null
+            },
+            customTableFields: {
+                phone: "",
+                name: "",
             }
         };
 
@@ -207,7 +213,20 @@ export default class Home extends Component {
         })
     };
 
-    addToYearsTable = (phone, name) => {
+    changeValue = (e, field) => {
+        this.setState(
+            {
+                customTableFields: {
+                    ...this.state.customTableFields,
+                    [field]: e.target.value
+                }
+            }
+        );
+    };
+
+    addToYearsTable = (e) => {
+        e.preventDefault();
+        const {phone, name} = this.state.customTableFields;
         if (phone.trim() === '' || name.trim() === '') {
             return;
         }
@@ -222,6 +241,10 @@ export default class Home extends Component {
                     name,
                     isActive: true
                 }
+            },
+            customTableFields: {
+                phone: "",
+                name: ""
             }
         });
     };
@@ -301,7 +324,14 @@ export default class Home extends Component {
     };
 
     render() {
-        const {skills, workExperience, education, objectTable, errorLoadingData} = this.state;
+        const {
+            skills,
+            workExperience,
+            education,
+            objectTable,
+            errorLoadingData,
+            customTableFields : {phone,name}
+        } = this.state;
         return (
             <HomeView
                 skills={skills}
@@ -309,15 +339,18 @@ export default class Home extends Component {
                 workExperience={workExperience}
                 objectTable={objectTable}
                 errorLoadingData={errorLoadingData}
+                phone={phone}
+                name={name}
 
                 sortByFilter={this.sortByFilter}
                 bubbleSort={this.bubbleSort}
-                addToYearsTable={this.addToYearsTable}
                 removeItem={this.removeItem}
                 handleActive={this.handleActive}
                 onDragStart={this.onDragStart}
                 onDragOver={this.onDragOver}
                 onDragEnd={this.onDragEnd}
+                changeValue={this.changeValue}
+                addToYearsTable={this.addToYearsTable}
             />
         )
     }

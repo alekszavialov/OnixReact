@@ -1,0 +1,36 @@
+ package-lock.json                                  |  102 [32m++[m
+ package.json                                       |    1 [32m+[m
+ public/favicon.ico                                 |  Bin [31m3870[m -> [32m0[m bytes
+ public/manifest.json                               |   15 [31m-[m
+ src/App.js                                         |   19 [32m+[m[31m-[m
+ src/components/App.js                              |   20 [31m-[m
+ src/components/_fonts.sass                         |   13 [31m-[m
+ src/components/_media.sass                         |  115 [31m--[m
+ src/{ => components}/layout/Footer/Footer.js       |    4 [32m+[m[31m-[m
+ src/{ => components}/layout/Footer/FooterView.js   |    1 [31m-[m
+ src/{ => components}/layout/Header/Header.js       |    2 [32m+[m[31m-[m
+ src/{ => components}/layout/Header/HeaderView.js   |    0
+ src/{ => components}/layout/Page/Page.js           |    2 [32m+[m[31m-[m
+ src/{ => components}/layout/Page/PageView.js       |    3 [32m+[m[31m-[m
+ src/components/mixins.css                          |    0
+ src/components/mixins.sass                         |   65 [31m-[m
+ src/{ => components}/pages/Home/Home.js            |   39 [32m+[m[31m-[m
+ src/{ => components}/pages/Home/HomeView.js        |   64 [32m+[m[31m-[m
+ src/components/styles.css                          | 1257 [31m--------------------[m
+ src/components/styles.sass                         |  649 [31m----------[m
+ src/scenes/Footer/index.js                         |   81 [31m--[m
+ src/scenes/Header/components/index.js              |   44 [31m-[m
+ src/scenes/Header/index.js                         |   30 [31m-[m
+ .../YearsTable/components/YearsTreeItem/index.js   |   55 [31m-[m
+ .../YearsTable/components/YearsTreeItem/styles.css |   12 [31m-[m
+ .../components/YearsTreeItem/styles.sass           |   11 [31m-[m
+ src/scenes/Home/components/YearsTable/index.js     |  111 [31m--[m
+ src/scenes/Home/components/homeTree/index.js       |   26 [31m-[m
+ src/scenes/Home/components/index.js                |  160 [31m---[m
+ src/scenes/Home/index.js                           |  346 [31m------[m
+ src/scss/_fonts.scss                               |    3 [31m-[m
+ src/scss/_media.scss                               |  205 [32m++++[m
+ .../{ => components}/layout/footer/footer.scss     |   18 [32m+[m[31m-[m
+ .../{ => components}/layout/header/header.scss     |   10 [32m+[m[31m-[m
+ src/scss/{ => components}/layout/page/page.scss    |   20 [32m+[m[31m-[m
+ 35 files changed, 444 insertions(+), 3059 deletions(-)

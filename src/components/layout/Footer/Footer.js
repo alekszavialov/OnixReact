@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import FooterView from './FooterView';
 
-import '../../scss/layout/footer/footer.scss';
+import '../../../scss/components/layout/footer/footer.scss';
 
 export default class Footer extends Component {
 
@@ -15,7 +15,7 @@ export default class Footer extends Component {
             ],
             footerAbout: [
                 {
-                    ico: "Home",
+                    ico: "home",
                     title: "Location",
                     text: "324, Golden Tower, Amborkhana, Sylhet"
                 },

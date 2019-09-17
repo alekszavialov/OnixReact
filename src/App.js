@@ -1,16 +1,27 @@
 import React, {Component} from 'react';
-import Page from './layout/Page/Page';
-import Home from './pages/Home/Home';
+import { Switch, Router, Route } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import Page from './components/layout/Page/Page';
+import Home from './components/pages/Home/Home';
+
+import './scss/_media.scss';
 
 class App extends Component {
 
-
+    constructor(props) {
+        super(props);
+        this.history = createBrowserHistory();
+    }
 
     render() {
         return (
+            <Router history={this.history}>
             <Page>
-                <Home/>
+                <Switch>
+                    <Route exact strict path="/" component={Home} />
+                </Switch>
             </Page>
+            </Router>
         );
     }
 }

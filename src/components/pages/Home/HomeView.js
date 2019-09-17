@@ -1,20 +1,26 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
+import ItemsTree from "./components/ItemsTree/ItemsTree";
+import CustomTable from "./components/CustomTable/CustomTable";
+
 homeView.propTypes = {
-    skills: PropTypes.array,
-    workExperience: PropTypes.array,
-    education: PropTypes.array,
+    skills: PropTypes.array.isRequired,
+    workExperience: PropTypes.array.isRequired,
+    education: PropTypes.array.isRequired,
     objectTable: PropTypes.object,
     errorLoadingData: PropTypes.any,
+    phone: PropTypes.string,
+    name: PropTypes.string,
     sortByFilter: PropTypes.func,
-    addToYearsTable: PropTypes.func,
     removeItem: PropTypes.func,
     bubbleSort: PropTypes.func,
     handleActive: PropTypes.func,
     onDragStart: PropTypes.func,
     onDragOver: PropTypes.func,
     onDragEnd: PropTypes.func,
+    changeValue: PropTypes.func,
+    addToYearsTable: PropTypes.func
 };
 
 export default function homeView
@@ -24,17 +30,18 @@ export default function homeView
          education,
          objectTable,
          errorLoadingData,
+         phone,
+         name,
          sortByFilter,
-         addToYearsTable,
          removeItem,
          bubbleSort,
          handleActive,
          onDragStart,
          onDragOver,
-         onDragEnd
+         onDragEnd,
+         changeValue,
+         addToYearsTable
      }) {
-
-
 
     return (
         <Fragment>
@@ -87,13 +94,48 @@ export default function homeView
                             </ul>
                         </div>
                         <div className="about-me-block-image">
-                            <img src={require("../../assets/images/about-me-img.png")} alt="me"/>
+                            <img src={require("../../../assets/images/about-me-img.png")} alt="me"/>
                         </div>
                     </div>
 
                 </div>
             </article>
-
+            <article id="table">
+                {
+                    objectTable ?
+                        (
+                            <CustomTable
+                                data={objectTable}
+                                phone={phone}
+                                name={name}
+                                sortByFilter={sortByFilter}
+                                bubbleSort={bubbleSort}
+                                removeItem={removeItem}
+                                handleActive={handleActive}
+                                onDragStart={onDragStart}
+                                onDragOver={onDragOver}
+                                onDragEnd={onDragEnd}
+                                addToYearsTable={addToYearsTable}
+                                changeValue={changeValue}
+                            />
+                        ) :
+                        errorLoadingData ?
+                            <h2 className="loading-error">{errorLoadingData}</h2> :
+                            <div className="lds-hourglass"/>
+                }
+            </article>
+            <article id="workExperience">
+                <div className="container separator">
+                    <h2>Work Experience</h2>
+                    <ItemsTree data={workExperience}/>
+                </div>
+            </article>
+            <article id="education">
+                <div className="container">
+                    <h2>Education</h2>
+                    <ItemsTree data={education}/>
+                </div>
+            </article>
             <article id="mySkills">
                 <div className="container">
                     <h2>My Skills</h2>

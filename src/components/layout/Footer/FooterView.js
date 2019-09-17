@@ -46,7 +46,6 @@ export default function footerView({footerSocials, footerAbout}) {
                                     href="//#"
                                     target="_blank"
                                 >
-                                    &nbsp
                                 </a>
                             </li>
                         )

@@ -1,8 +1,4 @@
-@import "../../mixins.scss";
-
-footer {
-  padding: 107px 0 30px 0;
-}
+@import "../../../mixins";
 
 .footer-block {
   @include display-flex();
@@ -173,20 +169,20 @@ footer {
 }
 
 .ico-home {
-  @include mask-image(url(../../../assets/images/icons/custom/home-solid.svg));
+  @include mask-image(url(../../../../assets/images/icons/custom/home-solid.svg));
 }
 
 .ico-email {
-  @include mask-image(url(../../../assets/images/icons/custom/paper-plane-regular.svg));
+  @include mask-image(url(../../../../assets/images/icons/custom/paper-plane-regular.svg));
 }
 
 .ico-phone {
-  @include mask-image(url(../../../assets/images/icons/custom/phone-solid.svg));
+  @include mask-image(url(../../../../assets/images/icons/custom/phone-solid.svg));
   transform: rotate(180deg)
 }
 
 .ico-dribble {
-  @include mask-image(url(../../../assets/images/icons/social/dribbble-brands.svg));
+  @include mask-image(url(../../../../assets/images/icons/social/dribbble-brands.svg));
 
   &:hover {
     background: #fb6470;
@@ -194,7 +190,7 @@ footer {
 }
 
 .ico-skype {
-  @include mask-image(url(../../../assets/images/icons/social/skype-brands.svg));
+  @include mask-image(url(../../../../assets/images/icons/social/skype-brands.svg));
 
   &:hover {
     background: #69d4d8;
@@ -202,7 +198,7 @@ footer {
 }
 
 .ico-twitter {
-  @include mask-image(url(../../../assets/images/icons/social/twitter-brands.svg));
+  @include mask-image(url(../../../../assets/images/icons/social/twitter-brands.svg));
 
   &:hover {
     background: #69d4d8;

@@ -3,7 +3,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import PageView from './PageView';
 
-import '../../scss/layout/page/page.scss';
+import '../../../scss/components/layout/page/page.scss';
 
 export default class Page extends Component {
     render() {
