@@ -10,7 +10,7 @@ export default function Footer() {
 
     const about = [
         {
-            ico: "home",
+            ico: "Home",
             title: "Location",
             text: "324, Golden Tower, Amborkhana, Sylhet"
         },
