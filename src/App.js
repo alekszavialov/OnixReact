@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import { Switch, Router, Route } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import {Switch, Router, Route} from 'react-router-dom';
+import {createBrowserHistory} from 'history';
 import Page from './components/layout/Page/Page';
 import Home from './components/pages/Home/Home';
+import ErrorPage from "./scss/components/layout/404/ErrorPage";
 
 import './scss/_media.scss';
 
@@ -16,11 +17,12 @@ class App extends Component {
     render() {
         return (
             <Router history={this.history}>
-            <Page>
-                <Switch>
-                    <Route exact strict path="/" component={Home} />
-                </Switch>
-            </Page>
+                <Page>
+                    <Switch>
+                        <Route exact strict path="/" component={Home}/>
+                        <Route component={ErrorPage}/>
+                    </Switch>
+                </Page>
             </Router>
         );
     }
