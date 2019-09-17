@@ -6,6 +6,7 @@ import PageView from './PageView';
 import '../../../scss/components/layout/page/page.scss';
 
 export default class Page extends Component {
+
     render() {
         return (
             <Fragment>
