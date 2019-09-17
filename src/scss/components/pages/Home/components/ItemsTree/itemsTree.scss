@@ -1,0 +1,147 @@
+@import "../../../../../mixins";
+
+.tree {
+  position: relative;
+  @include display-flex();
+  @include flex-wrap (wrap);
+
+  .tree-item {
+    background: #353541;
+    padding: 20px;
+    @include display-flex();
+    box-sizing: border-box;
+    @include flex-direction(row);
+    width: 475px;
+    height: 145px;
+    border-radius: 10px;
+    @include flex-wrap(wrap);
+    position: relative;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    h3 {
+      margin: 0 20px 0 0;
+      font-size: 22px;
+      color: #ffffff;
+      font-family: Raleway-Medium, sans-serif;
+    }
+
+    span {
+      font-size: 20px;
+      color: #ffffff;
+    }
+
+    .tree-item-date, p {
+      @include flex(0 0 100%);
+    }
+
+    .tree-item-date {
+      font-size: 18px;
+      text-transform: uppercase;
+      color: #fb6470;
+    }
+
+    p {
+      color: #ffffff;
+      line-height: 22px;
+    }
+  }
+
+  li {
+    @include flex(0 0 50%);
+    @include display-flex();
+    @include flex-direction(row);
+    position: relative;
+
+    &:nth-child(even) {
+      @include justify-content(flex-end);
+      margin-bottom: 190px;
+
+      .tree-item {
+        &:after {
+          top: 20px;
+          right: 100%;
+          border-top: 25px solid #353541;
+          border-left: 35px solid transparent;
+        }
+      }
+
+      > span {
+        top: 0;
+        left: -21px
+      }
+
+    }
+
+    &:nth-child(odd) {
+      margin-top: 70px;
+
+      .tree-item {
+        &:after {
+          left: 100%;
+          bottom: 20px;
+          border-bottom: 25px solid #353541;
+          border-right: 35px solid transparent;
+        }
+      }
+
+      span {
+        right: -21px;
+        top: 101px;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    > span {
+      display: block;
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border: 2px solid #050505;
+      border-radius: 50%;
+      z-index: 1;
+      background: #fff;
+
+      &:after {
+        content: "";
+        display: block;
+        height: 18px;
+        width: 18px;
+        border: 2px solid #050505;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        background: #fb6470;
+        position: absolute;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+
+    &:after {
+      display: block;
+      position: absolute;
+    }
+
+  }
+
+  &:after {
+    height: 100%;
+    top: 0;
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    border-left: 1px solid #353541;
+    border-right: 1px solid #cfcfd2;
+    transform: translateX(-50%);
+  }
+}
