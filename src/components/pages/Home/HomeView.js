@@ -117,8 +117,8 @@ export default function homeView
                 addToYearsTable={addToYearsTable}
                 changeValue={changeValue}
             />
-            <ItemsTree data={workExperience} title="workExperience"/>
-            <ItemsTree data={education} title="Education"/>
+            <ItemsTree data={workExperience} id="workExperience" title="Work Experience"/>
+            <ItemsTree data={education} id="education" title="Education"/>
             <SkillsBlock skills={skills}/>
         </Fragment>
     )

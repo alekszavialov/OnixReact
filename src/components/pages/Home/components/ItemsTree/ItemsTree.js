@@ -7,12 +7,13 @@ import Spinner from "../../../../elements/Spinner/Spinner";
 
 itemsTree.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    id: PropTypes.string,
     title: PropTypes.string
 };
 
-export default function itemsTree({data, title}) {
+export default function itemsTree({data, id, title}) {
     return (
-        <article id="education">
+        <article id={id}>
             <div className="container">
                 {data ? (
                     <Fragment>
