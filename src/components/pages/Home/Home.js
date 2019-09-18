@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import HomeView from './HomeView';
 
-import '../../../scss/components/pages/Home/home.scss';
-
 export default class Home extends Component {
 
     constructor(props) {

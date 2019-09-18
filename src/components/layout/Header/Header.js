@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import HeaderView from './HeaderView';
 
-import '../../../scss/components/layout/header/header.scss';
-
 export default class Header extends Component {
 
     constructor(props){

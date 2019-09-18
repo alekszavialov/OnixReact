@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import '../../../scss/components/layout/footer/footer.scss';
+
 footerView.propTypes = {
     footerSocials: PropTypes.array,
     footerAbout: PropTypes.array,

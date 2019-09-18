@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import '../../../scss/components/layout/header/header.scss';
+
 headerView.propTypes = {
     toggleMenu: PropTypes.func,
     menuListClass: PropTypes.string,

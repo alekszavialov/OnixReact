@@ -1,23 +1,41 @@
-import React from 'react';
+import React, {Fragment} from 'react';
+import PropTypes from 'prop-types';
 
 import '../../../../../scss/components/pages/Home/components/ItemsTree/itemsTree.scss';
 
-export default function HomeTree({data}) {
+import Spinner from "../../../../elements/Spinner/Spinner";
+
+itemsTree.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    title: PropTypes.string
+};
+
+export default function itemsTree({data, title}) {
     return (
-        <ul className="tree">
-            {
-                data.map(item =>
-                    <li key={item.title}>
-                        <span/>
-                        <div className="tree-item">
-                            <h3>{item.title}</h3>
-                            <span>{item.place}</span>
-                            <span className="tree-item-date">{item.date}</span>
-                            <p>{item.description}</p>
-                        </div>
-                    </li>
-                )
-            }
-        </ul>
+        <article id="education">
+            <div className="container">
+                {data ? (
+                    <Fragment>
+                        <h2>{title}</h2>
+                        <ul className="tree">
+                            {
+                                data.map(item =>
+                                    <li key={item.title}>
+                                        <span/>
+                                        <div className="tree-item">
+                                            <h3>{item.title}</h3>
+                                            <span>{item.place}</span>
+                                            <span className="tree-item-date">{item.date}</span>
+                                            <p>{item.description}</p>
+                                        </div>
+                                    </li>
+                                )
+                            }
+                        </ul>
+                    </Fragment>
+                ) : <Spinner/>}
+            </div>
+        </article>
+
     )
 }

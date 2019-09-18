@@ -1,0 +1,7 @@
+.loading-error {
+  text-align: center;
+  color: red;
+  &:after {
+    display: none;
+  }
+}

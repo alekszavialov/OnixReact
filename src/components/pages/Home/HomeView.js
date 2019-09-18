@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import ItemsTree from "./components/ItemsTree/ItemsTree";
 import CustomTable from "./components/CustomTable/CustomTable";
+import SkillsBlock from "./components/SkillsBlock/SkillsBlock";
+
+import '../../../scss/components/pages/Home/home.scss';
 
 homeView.propTypes = {
     skills: PropTypes.array.isRequired,
@@ -100,62 +103,23 @@ export default function homeView
 
                 </div>
             </article>
-            <article id="table">
-                {
-                    objectTable ?
-                        (
-                            <CustomTable
-                                data={objectTable}
-                                phone={phone}
-                                name={name}
-                                sortByFilter={sortByFilter}
-                                bubbleSort={bubbleSort}
-                                removeItem={removeItem}
-                                handleActive={handleActive}
-                                onDragStart={onDragStart}
-                                onDragOver={onDragOver}
-                                onDragEnd={onDragEnd}
-                                addToYearsTable={addToYearsTable}
-                                changeValue={changeValue}
-                            />
-                        ) :
-                        errorLoadingData ?
-                            <h2 className="loading-error">{errorLoadingData}</h2> :
-                            <div className="lds-hourglass"/>
-                }
-            </article>
-            <article id="workExperience">
-                <div className="container separator">
-                    <h2>Work Experience</h2>
-                    <ItemsTree data={workExperience}/>
-                </div>
-            </article>
-            <article id="education">
-                <div className="container">
-                    <h2>Education</h2>
-                    <ItemsTree data={education}/>
-                </div>
-            </article>
-            <article id="mySkills">
-                <div className="container">
-                    <h2>My Skills</h2>
-                    <ul className="my-skills-list">
-                        {
-                            skills.map(item =>
-                                <li key={item.id}>
-                                    <p>{item.title}</p>
-                                    <div className="my-skills-list-scale">
-                                        <div>
-                                            <span style={{width: `${item.value}%`}}/>
-                                        </div>
-                                        <p>{item.value}%</p>
-                                    </div>
-                                </li>
-                            )
-                        }
-                    </ul>
-                </div>
-            </article>
+            <CustomTable
+                data={objectTable}
+                phone={phone}
+                name={name}
+                sortByFilter={sortByFilter}
+                bubbleSort={bubbleSort}
+                removeItem={removeItem}
+                handleActive={handleActive}
+                onDragStart={onDragStart}
+                onDragOver={onDragOver}
+                onDragEnd={onDragEnd}
+                addToYearsTable={addToYearsTable}
+                changeValue={changeValue}
+            />
+            <ItemsTree data={workExperience} title="workExperience"/>
+            <ItemsTree data={education} title="Education"/>
+            <SkillsBlock skills={skills}/>
         </Fragment>
     )
 

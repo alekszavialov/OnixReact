@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import '../../../../../../../scss/components/pages/Home/components/CustomTable/components/CustomTableItem/customTableItem.scss';
 
-customTreeItem.propTypes = {
+customTableItem.propTypes = {
     itemKey: PropTypes.string,
     phone: PropTypes.string,
     name: PropTypes.string,
@@ -15,7 +15,7 @@ customTreeItem.propTypes = {
     onDragEnd: PropTypes.func,
 };
 
-export default function customTreeItem(
+export default function customTableItem(
     {
         itemKey,
         phone,
