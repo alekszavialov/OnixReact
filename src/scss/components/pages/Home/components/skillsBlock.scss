@@ -1,18 +1,5 @@
 @import "../../../../mixins";
 
-#mySkills {
-  background: #1d1d24;
-  padding: 65px 0 55px 0;
-
-  h2 {
-    margin-bottom: 40px;
-  }
-
-  h2, p {
-    color: #ffffff;
-  }
-}
-
 .my-skills-list-scale {
   @include display-flex();
   @include flex-direction(row);
@@ -50,6 +37,14 @@
   }
 }
 
+@media only screen and (max-width: 480px) {
+  .my-skills-list-scale {
+    div {
+      width: 220px;
+    }
+  }
+}
+
 .my-skills-list {
   @include display-flex();
   @include flex-direction(row);
@@ -68,3 +63,14 @@
     }
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  .my-skills-list {
+    justify-content: center;
+    li {
+      @include flex(auto);
+      align-items: center;
+    }
+  }
+}
+

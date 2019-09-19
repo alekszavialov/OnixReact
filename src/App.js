@@ -5,8 +5,6 @@ import Page from './components/layout/Page/Page';
 import Home from './components/pages/Home/Home';
 import ErrorPage from "./components/layout/404/ErrorPage";
 
-import './scss/_media.scss';
-
 class App extends Component {
 
     constructor(props) {

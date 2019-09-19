@@ -1,7 +1,5 @@
 @import "../../../mixins";
 
-
-
 .header-block {
   width: 325px;
   margin-left: 540px;
@@ -82,6 +80,30 @@
     &:hover {
       color: #353541
     }
+  }
+
+}
+
+@media only screen and (max-width: 1140px) {
+  .header-block {
+    margin: 0 auto;
+    ul {
+      text-align: center;
+      li {
+        &:after {
+          display: none
+        }
+        &:last-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .header-block {
+    width: 100%;
   }
 }
 

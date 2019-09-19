@@ -6,6 +6,29 @@
   padding-bottom: 80px;
 }
 
+@media only screen and (max-width: 1140px) {
+  .footer-block {
+    .footer-block-about {
+      margin-left: 0;
+      padding-left: 0;
+      li {
+        margin-left: 30px
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .footer-block {
+    @include flex-direction(column);
+    .footer-block-about {
+      li {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
 .footer-block-message-form, .footer-block-about {
   @include flex(1 0 50%);
   @include display-flex();
@@ -81,6 +104,22 @@
 
     &:hover {
       opacity: 1;
+    }
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  .footer-block-message-form {
+    padding-bottom: 50px;
+    .footer-block-message-form-inputs {
+      @include flex(auto);
+      padding-bottom: 50px;
+      input {
+        width: 100%;
+      }
+      textarea, input {
+        margin: 0 0 17px 0;
+      }
     }
   }
 }
