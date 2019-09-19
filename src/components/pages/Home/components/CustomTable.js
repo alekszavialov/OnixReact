@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import '../../../../scss/components/pages/Home/components/customTable.scss';
 
-import CustomTableItem from "./CustomTableItem";
 import Spinner from "../../../elements/Spinner/Spinner";
 import ErrorMessage from "../../../elements/ErrorMessage/ErrorMessage";
 
@@ -15,42 +14,10 @@ export default function CustomTable(
         errorLoadingData,
         sortByFilter,
         bubbleSort,
-        removeItem,
-        handleActive,
-        onDragStart,
-        onDragOver,
-        onDragEnd,
         addToYearsTable,
         changeValue
     }) {
-
-    const fillData = () => {
-        let dataArray = [];
-        for (let key in data) {
-            if (data.hasOwnProperty(key)) {
-                dataArray = [
-                    ...dataArray,
-                    <CustomTableItem
-                        key={key}
-                        itemKey={key}
-                        phone={data[key].phone}
-                        name={data[key].name}
-                        isActive={data[key].isActive}
-                        removeItem={removeItem}
-                        handleActive={handleActive}
-                        onDragStart={onDragStart}
-                        onDragOver={onDragOver}
-                        onDragEnd={onDragEnd}
-                    />
-                ]
-            }
-        }
-        return dataArray;
-    };
-
-
     return (
-
         <article id="table">
             <div className="container">
                 {data ? (
@@ -85,7 +52,7 @@ export default function CustomTable(
                             <table className="customTable">
                                 <tbody>
                                 {
-                                    fillData()
+                                    data
                                 }
                                 </tbody>
                             </table>
@@ -107,11 +74,6 @@ CustomTable.propTypes = {
     errorLoadingData: PropTypes.string,
     sortByFilter: PropTypes.func,
     bubbleSort: PropTypes.func,
-    removeItem: PropTypes.func,
-    handleActive: PropTypes.func,
-    onDragStart: PropTypes.func,
-    onDragOver: PropTypes.func,
-    onDragEnd: PropTypes.func,
     addToYearsTable: PropTypes.func,
     changeValue: PropTypes.func,
 };

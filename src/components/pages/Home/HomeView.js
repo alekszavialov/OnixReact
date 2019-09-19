@@ -17,12 +17,7 @@ export default function HomeView
          phone,
          name,
          sortByFilter,
-         removeItem,
          bubbleSort,
-         handleActive,
-         onDragStart,
-         onDragOver,
-         onDragEnd,
          changeValue,
          addToYearsTable
      }) {
@@ -90,11 +85,6 @@ export default function HomeView
                 name={name}
                 sortByFilter={sortByFilter}
                 bubbleSort={bubbleSort}
-                removeItem={removeItem}
-                handleActive={handleActive}
-                onDragStart={onDragStart}
-                onDragOver={onDragOver}
-                onDragEnd={onDragEnd}
                 addToYearsTable={addToYearsTable}
                 changeValue={changeValue}
             />
@@ -114,12 +104,7 @@ HomeView.propTypes = {
     phone: PropTypes.string,
     name: PropTypes.string,
     sortByFilter: PropTypes.func,
-    removeItem: PropTypes.func,
     bubbleSort: PropTypes.func,
-    handleActive: PropTypes.func,
-    onDragStart: PropTypes.func,
-    onDragOver: PropTypes.func,
-    onDragEnd: PropTypes.func,
     changeValue: PropTypes.func,
     addToYearsTable: PropTypes.func
 };

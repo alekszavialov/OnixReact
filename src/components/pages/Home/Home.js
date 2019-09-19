@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import HomeView from './HomeView';
+import CustomTableItem from './components/CustomTableItem';
 
 export default class Home extends Component {
 
@@ -321,6 +322,30 @@ export default class Home extends Component {
         });
     };
 
+    createCustomTableItems = (data) => {
+            let dataArray = [];
+            for (let key in data) {
+                if (data.hasOwnProperty(key)) {
+                    dataArray = [
+                        ...dataArray,
+                        <CustomTableItem
+                            key={key}
+                            itemKey={key}
+                            phone={data[key].phone}
+                            name={data[key].name}
+                            isActive={data[key].isActive}
+                            removeItem={this.removeItem}
+                            handleActive={this.handleActive}
+                            onDragStart={this.onDragStart}
+                            onDragOver={this.onDragOver}
+                            onDragEnd={this.onDragEnd}
+                        />
+                    ]
+                }
+            }
+            return dataArray;
+    };
+
     render() {
         const {
             skills,
@@ -330,23 +355,19 @@ export default class Home extends Component {
             errorLoadingData,
             customTableFields : {phone,name}
         } = this.state;
+        const customTableItems = objectTable ? this.createCustomTableItems(objectTable) : null;
         return (
             <HomeView
                 skills={skills}
                 education={education}
                 workExperience={workExperience}
-                objectTable={objectTable}
+                objectTable={customTableItems}
                 errorLoadingData={errorLoadingData}
                 phone={phone}
                 name={name}
 
                 sortByFilter={this.sortByFilter}
                 bubbleSort={this.bubbleSort}
-                removeItem={this.removeItem}
-                handleActive={this.handleActive}
-                onDragStart={this.onDragStart}
-                onDragOver={this.onDragOver}
-                onDragEnd={this.onDragEnd}
                 changeValue={this.changeValue}
                 addToYearsTable={this.addToYearsTable}
             />
