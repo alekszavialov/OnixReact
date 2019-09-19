@@ -1,11 +1,11 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-import '../../../../../scss/components/pages/Home/components/CustomTable/customTable.scss';
+import '../../../../scss/components/pages/Home/components/customTable.scss';
 
-import CustomTableItem from "./components/CustomTableItem/CustomTableItem";
-import Spinner from "../../../../elements/Spinner/Spinner";
-import ErrorMessage from "../../../../elements/ErrorMessage/ErrorMessage";
+import CustomTableItem from "./CustomTableItem";
+import Spinner from "../../../elements/Spinner/Spinner";
+import ErrorMessage from "../../../elements/ErrorMessage/ErrorMessage";
 
 export default function CustomTable(
     {

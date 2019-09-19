@@ -3,7 +3,7 @@ import {Switch, Router, Route} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
 import Page from './components/layout/Page/Page';
 import Home from './components/pages/Home/Home';
-import ErrorPage from "./scss/components/layout/404/ErrorPage";
+import ErrorPage from "./components/layout/404/ErrorPage";
 
 import './scss/_media.scss';
 

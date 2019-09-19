@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-import ItemsTree from "./components/ItemsTree/ItemsTree";
-import CustomTable from "./components/CustomTable/CustomTable";
-import SkillsBlock from "./components/SkillsBlock/SkillsBlock";
+import ItemsTree from "./components/ItemsTree";
+import CustomTable from "./components/CustomTable";
+import SkillsBlock from "./components/SkillsBlock";
 
 import '../../../scss/components/pages/Home/home.scss';
 

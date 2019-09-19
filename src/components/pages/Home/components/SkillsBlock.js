@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-import '../../../../../scss/components/pages/Home/components/SkillsBlock/skillsBlock.scss';
+import '../../../../scss/components/pages/Home/components/skillsBlock.scss';
 
-import Spinner from "../../../../elements/Spinner/Spinner";
+import Spinner from "../../../elements/Spinner/Spinner";
 
 export default function SkillBlock({skills}) {
     return (

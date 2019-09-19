@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../../../../../../../scss/components/pages/Home/components/CustomTable/components/CustomTableItem/customTableItem.scss';
+import '../../../../scss/components/pages/Home/components/customTableItem.scss';
 
 export default function CustomTableItem(
     {
