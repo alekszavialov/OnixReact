@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 
 import '../../../scss/components/layout/header/header.scss';
 
-headerView.propTypes = {
-    toggleMenu: PropTypes.func,
-    menuListClass: PropTypes.string,
-};
-
-export default function headerView({toggleMenu, menuListClass}) {
+export default function HeaderView({toggleMenu, menuListClass}) {
     return (
         <header className="bg-dark" id="head">
             <div className="container">
@@ -43,3 +38,8 @@ export default function headerView({toggleMenu, menuListClass}) {
         </header>
     )
 }
+
+HeaderView.propTypes = {
+    toggleMenu: PropTypes.func,
+    menuListClass: PropTypes.string,
+};

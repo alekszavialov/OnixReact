@@ -5,11 +5,7 @@ import '../../../../../scss/components/pages/Home/components/SkillsBlock/skillsB
 
 import Spinner from "../../../../elements/Spinner/Spinner";
 
-skillBlock.propTypes = {
-    skills: PropTypes.arrayOf(PropTypes.object).isRequired
-};
-
-export default function skillBlock({skills}) {
+export default function SkillBlock({skills}) {
     return (
         <article id="mySkills">
             <div className="container">
@@ -37,3 +33,7 @@ export default function skillBlock({skills}) {
         </article>
     )
 }
+
+SkillBlock.propTypes = {
+    skills: PropTypes.arrayOf(PropTypes.object).isRequired
+};

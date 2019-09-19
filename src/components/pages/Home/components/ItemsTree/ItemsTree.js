@@ -5,13 +5,7 @@ import '../../../../../scss/components/pages/Home/components/ItemsTree/itemsTree
 
 import Spinner from "../../../../elements/Spinner/Spinner";
 
-itemsTree.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.object).isRequired,
-    id: PropTypes.string,
-    title: PropTypes.string
-};
-
-export default function itemsTree({data, id, title}) {
+export default function ItemsTree({data, id, title}) {
     return (
         <article id={id}>
             <div className="container">
@@ -40,3 +34,9 @@ export default function itemsTree({data, id, title}) {
 
     )
 }
+
+ItemsTree.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    id: PropTypes.string,
+    title: PropTypes.string
+};

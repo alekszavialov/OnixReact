@@ -7,26 +7,7 @@ import SkillsBlock from "./components/SkillsBlock/SkillsBlock";
 
 import '../../../scss/components/pages/Home/home.scss';
 
-homeView.propTypes = {
-    skills: PropTypes.array.isRequired,
-    workExperience: PropTypes.array.isRequired,
-    education: PropTypes.array.isRequired,
-    objectTable: PropTypes.object,
-    errorLoadingData: PropTypes.any,
-    phone: PropTypes.string,
-    name: PropTypes.string,
-    sortByFilter: PropTypes.func,
-    removeItem: PropTypes.func,
-    bubbleSort: PropTypes.func,
-    handleActive: PropTypes.func,
-    onDragStart: PropTypes.func,
-    onDragOver: PropTypes.func,
-    onDragEnd: PropTypes.func,
-    changeValue: PropTypes.func,
-    addToYearsTable: PropTypes.func
-};
-
-export default function homeView
+export default function HomeView
     ({
          skills,
          workExperience,
@@ -122,5 +103,23 @@ export default function homeView
             <SkillsBlock skills={skills}/>
         </Fragment>
     )
-
 }
+
+HomeView.propTypes = {
+    skills: PropTypes.array.isRequired,
+    workExperience: PropTypes.array.isRequired,
+    education: PropTypes.array.isRequired,
+    objectTable: PropTypes.object,
+    errorLoadingData: PropTypes.any,
+    phone: PropTypes.string,
+    name: PropTypes.string,
+    sortByFilter: PropTypes.func,
+    removeItem: PropTypes.func,
+    bubbleSort: PropTypes.func,
+    handleActive: PropTypes.func,
+    onDragStart: PropTypes.func,
+    onDragOver: PropTypes.func,
+    onDragEnd: PropTypes.func,
+    changeValue: PropTypes.func,
+    addToYearsTable: PropTypes.func
+};

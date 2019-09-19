@@ -3,8 +3,6 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import PageView from './PageView';
 
-
-
 export default class Page extends Component {
 
     render() {

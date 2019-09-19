@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 
 import '../../../scss/components/layout/footer/footer.scss';
 
-footerView.propTypes = {
-    footerSocials: PropTypes.array,
-    footerAbout: PropTypes.array,
-};
-
-export default function footerView({footerSocials, footerAbout}) {
+export default function FooterView({footerSocials, footerAbout}) {
 
     return (
         <footer id="leaveAmessage">
@@ -59,6 +54,9 @@ export default function footerView({footerSocials, footerAbout}) {
             </div>
         </footer>
     )
-
-
 }
+
+FooterView.propTypes = {
+    footerSocials: PropTypes.array,
+    footerAbout: PropTypes.array,
+};

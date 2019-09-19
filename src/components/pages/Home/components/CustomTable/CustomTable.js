@@ -7,23 +7,7 @@ import CustomTableItem from "./components/CustomTableItem/CustomTableItem";
 import Spinner from "../../../../elements/Spinner/Spinner";
 import ErrorMessage from "../../../../elements/ErrorMessage/ErrorMessage";
 
-customTable.propTypes = {
-    data: PropTypes.objectOf(PropTypes.object).isRequired,
-    phone: PropTypes.string,
-    name: PropTypes.string,
-    errorLoadingData: PropTypes.string,
-    sortByFilter: PropTypes.func,
-    bubbleSort: PropTypes.func,
-    removeItem: PropTypes.func,
-    handleActive: PropTypes.func,
-    onDragStart: PropTypes.func,
-    onDragOver: PropTypes.func,
-    onDragEnd: PropTypes.func,
-    addToYearsTable: PropTypes.func,
-    changeValue: PropTypes.func,
-};
-
-export default function customTable(
+export default function CustomTable(
     {
         data,
         phone,
@@ -114,5 +98,20 @@ export default function customTable(
             </div>
         </article>
     )
-
 }
+
+CustomTable.propTypes = {
+    data: PropTypes.objectOf(PropTypes.object).isRequired,
+    phone: PropTypes.string,
+    name: PropTypes.string,
+    errorLoadingData: PropTypes.string,
+    sortByFilter: PropTypes.func,
+    bubbleSort: PropTypes.func,
+    removeItem: PropTypes.func,
+    handleActive: PropTypes.func,
+    onDragStart: PropTypes.func,
+    onDragOver: PropTypes.func,
+    onDragEnd: PropTypes.func,
+    addToYearsTable: PropTypes.func,
+    changeValue: PropTypes.func,
+};

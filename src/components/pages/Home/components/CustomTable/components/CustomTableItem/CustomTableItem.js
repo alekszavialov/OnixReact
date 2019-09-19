@@ -3,19 +3,7 @@ import PropTypes from 'prop-types';
 
 import '../../../../../../../scss/components/pages/Home/components/CustomTable/components/CustomTableItem/customTableItem.scss';
 
-customTableItem.propTypes = {
-    itemKey: PropTypes.string,
-    phone: PropTypes.string,
-    name: PropTypes.string,
-    isActive: PropTypes.bool,
-    removeItem: PropTypes.func,
-    handleActive: PropTypes.func,
-    onDragStart: PropTypes.func,
-    onDragOver: PropTypes.func,
-    onDragEnd: PropTypes.func,
-};
-
-export default function customTableItem(
+export default function CustomTableItem(
     {
         itemKey,
         phone,
@@ -52,3 +40,15 @@ export default function customTableItem(
         </tr>
     )
 }
+
+CustomTableItem.propTypes = {
+    itemKey: PropTypes.string,
+    phone: PropTypes.string,
+    name: PropTypes.string,
+    isActive: PropTypes.bool,
+    removeItem: PropTypes.func,
+    handleActive: PropTypes.func,
+    onDragStart: PropTypes.func,
+    onDragOver: PropTypes.func,
+    onDragEnd: PropTypes.func,
+};
