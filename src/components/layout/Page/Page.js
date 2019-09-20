@@ -1,11 +1,15 @@
 import React, {Component, Fragment} from 'react';
+import {withRouter} from 'react-router-dom';
+
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import PageView from './PageView';
 
-export default class Page extends Component {
+class Page extends Component {
 
     render() {
+        const {children} = this.props;
+        console.log(this.props);
         return (
             <Fragment>
                 <Header/>
@@ -16,3 +20,5 @@ export default class Page extends Component {
     }
 
 }
+
+export default withRouter(Page);
