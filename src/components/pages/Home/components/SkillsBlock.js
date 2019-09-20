@@ -35,5 +35,13 @@ export default function SkillBlock({skills}) {
 }
 
 SkillBlock.propTypes = {
-    skills: PropTypes.arrayOf(PropTypes.object).isRequired
+    skills: PropTypes.arrayOf(
+        PropTypes.shape(
+            {
+                id: PropTypes.number,
+                value: PropTypes.number,
+                title: PropTypes.string
+            }
+        )
+    ).isRequired
 };

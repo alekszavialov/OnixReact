@@ -41,5 +41,10 @@ export default function HeaderView({toggleMenu, menuListClass}) {
 
 HeaderView.propTypes = {
     toggleMenu: PropTypes.func,
-    menuListClass: PropTypes.string,
+    menuListClass: PropTypes.oneOf(['open', 'hidden']),
+};
+
+HeaderView.defaultProps = {
+    toggleMenu: undefined,
+    menuListClass: 'hidden',
 };

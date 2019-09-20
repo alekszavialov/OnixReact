@@ -42,13 +42,22 @@ export default function CustomTableItem(
 }
 
 CustomTableItem.propTypes = {
-    itemKey: PropTypes.string,
-    phone: PropTypes.string,
-    name: PropTypes.string,
+    itemKey: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     isActive: PropTypes.bool,
     removeItem: PropTypes.func,
     handleActive: PropTypes.func,
     onDragStart: PropTypes.func,
     onDragOver: PropTypes.func,
     onDragEnd: PropTypes.func,
+};
+
+CustomTableItem.defaultProps = {
+    isActive: undefined,
+    removeItem: undefined,
+    handleActive: undefined,
+    onDragStart: undefined,
+    onDragOver: undefined,
+    onDragEnd: undefined,
 };

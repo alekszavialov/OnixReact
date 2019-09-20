@@ -5,6 +5,7 @@ import '../../../../scss/components/pages/Home/components/customTable.scss';
 
 import Spinner from "../../../elements/Spinner/Spinner";
 import ErrorMessage from "../../../elements/ErrorMessage/ErrorMessage";
+import CustomTableItem from "./CustomTableItem";
 
 export default function CustomTable(
     {
@@ -68,7 +69,22 @@ export default function CustomTable(
 }
 
 CustomTable.propTypes = {
-    data: PropTypes.objectOf(PropTypes.object).isRequired,
+    data: function (props, propName, componentName) {
+        const propValue = props[propName];
+        const typeOfPropValue = typeof propValue;
+        if (propValue === null) {
+            return
+        }
+        if (
+            PropTypes.arrayOf(
+                PropTypes.objectOf(
+                    PropTypes.instanceOf(CustomTableItem)
+                )
+            )) {
+            return
+        }
+        return new Error(`Invalid prop '${propName}' of type '${typeOfPropValue}' supplied to '${componentName}', expected 'null' or 'CustomTableItem'`)
+    },
     phone: PropTypes.string,
     name: PropTypes.string,
     errorLoadingData: PropTypes.string,
@@ -76,4 +92,14 @@ CustomTable.propTypes = {
     bubbleSort: PropTypes.func,
     addToYearsTable: PropTypes.func,
     changeValue: PropTypes.func,
+};
+
+CustomTable.defaultProps = {
+    phone: '',
+    name: '',
+    errorLoadingData: null,
+    sortByFilter: undefined,
+    bubbleSort: undefined,
+    addToYearsTable: undefined,
+    changeValue: undefined,
 };

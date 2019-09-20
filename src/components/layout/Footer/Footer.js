@@ -7,9 +7,18 @@ export default class Footer extends Component {
         super(props);
         this.state = {
             footerSocials: [
-                {className: "ico-twitter"},
-                {className: "ico-skype"},
-                {className: "ico-dribble"}
+                {
+                    className: "ico-twitter",
+                    href: "//#"
+                },
+                {
+                    className: "ico-skype",
+                    href: "//#"
+                },
+                {
+                    className: "ico-dribble",
+                    href: "//#"
+                }
             ],
             footerAbout: [
                 {

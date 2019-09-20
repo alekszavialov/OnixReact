@@ -30,7 +30,7 @@
 }
 
 .footer-block-message-form, .footer-block-about {
-  @include flex(1 0 50%);
+  @include flex(50%);
   @include display-flex();
 }
 
@@ -127,7 +127,6 @@
 .footer-block-about {
   @include flex-direction(column);
   padding-left: 50px;
-  margin-left: 60px;
 
   li {
     @include display-flex();

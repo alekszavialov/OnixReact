@@ -6,6 +6,7 @@ import CustomTable from "./components/CustomTable";
 import SkillsBlock from "./components/SkillsBlock";
 
 import '../../../scss/components/pages/Home/home.scss';
+import CustomTableItem from "./components/CustomTableItem";
 
 export default function HomeView
     ({
@@ -96,15 +97,64 @@ export default function HomeView
 }
 
 HomeView.propTypes = {
-    skills: PropTypes.array.isRequired,
-    workExperience: PropTypes.array.isRequired,
-    education: PropTypes.array.isRequired,
-    objectTable: PropTypes.object,
-    errorLoadingData: PropTypes.any,
+    skills: PropTypes.arrayOf(
+        PropTypes.shape(
+            {
+                id: PropTypes.number,
+                value: PropTypes.number,
+                title: PropTypes.string
+            }
+        )
+    ).isRequired,
+    workExperience: PropTypes.arrayOf(
+        PropTypes.objectOf(
+            PropTypes.string
+        )
+    ),
+    education: PropTypes.arrayOf(
+        PropTypes.objectOf(
+            PropTypes.string
+        )
+    ),
+    objectTable: function (props, propName, componentName) {
+        const propValue = props[propName];
+        const typeOfPropValue = typeof propValue;
+        if (propValue === null) {
+            return
+        }
+        if (
+            PropTypes.arrayOf(
+                PropTypes.objectOf(
+                    PropTypes.instanceOf(CustomTableItem)
+                )
+            )) {
+            return
+        }
+        return new Error(`Invalid prop '${propName}' of type '${typeOfPropValue}' supplied to '${componentName}', expected 'null' or 'CustomTableItem'`)
+    },
+    errorLoadingData: function (props, propName, componentName) {
+        const propValue = props[propName];
+        const typeOfPropValue = typeof propValue;
+        if (propValue === null || typeOfPropValue === 'string') {
+            return
+        }
+        return new Error(`Invalid prop '${propName}' of type '${typeOfPropValue}' supplied to '${componentName}', expected 'null' or 'string'`)
+    },
     phone: PropTypes.string,
     name: PropTypes.string,
     sortByFilter: PropTypes.func,
     bubbleSort: PropTypes.func,
     changeValue: PropTypes.func,
     addToYearsTable: PropTypes.func
+};
+
+HomeView.defaultProps = {
+    objectTable: null,
+    errorLoadingData: null,
+    phone: '',
+    name: '',
+    sortByFilter: undefined,
+    bubbleSort: undefined,
+    changeValue: undefined,
+    addToYearsTable: undefined
 };

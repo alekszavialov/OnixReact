@@ -36,7 +36,20 @@ export default function ItemsTree({data, id, title}) {
 }
 
 ItemsTree.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    data: PropTypes.arrayOf(
+        PropTypes.shape(
+            {
+                id: PropTypes.number,
+                value: PropTypes.number,
+                title: PropTypes.string
+            }
+        )
+    ).isRequired,
     id: PropTypes.string,
     title: PropTypes.string
+};
+
+ItemsTree.defaultProps = {
+    id: 'education',
+    title: 'Some title'
 };

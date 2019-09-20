@@ -12,3 +12,7 @@ export default function ErrorMessage({message = 'Error'}) {
 ErrorMessage.propTypes = {
     message: PropTypes.string
 };
+
+ErrorMessage.defaultProps = {
+    message: 'Error'
+};

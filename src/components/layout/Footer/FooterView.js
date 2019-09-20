@@ -35,12 +35,12 @@ export default function FooterView({footerSocials, footerAbout}) {
                 </div>
                 <ul className="footer-block-socials">
                     {
-                        footerSocials.map(item =>
-                            <li key={item.className}>
+                        footerSocials.map(({className, href}) =>
+                            <li key={className}>
                                 <a
-                                    className={`ico-social ${item.className}`}
+                                    className={`ico-social ${className}`}
                                     rel="noopener noreferrer"
-                                    href="//#"
+                                    href={href}
                                     target="_blank"
                                 >
                                 </a>
@@ -57,6 +57,30 @@ export default function FooterView({footerSocials, footerAbout}) {
 }
 
 FooterView.propTypes = {
-    footerSocials: PropTypes.array,
-    footerAbout: PropTypes.array,
+    footerSocials: PropTypes.arrayOf(
+        PropTypes.objectOf(
+            PropTypes.string
+        )
+    ),
+    footerAbout: PropTypes.arrayOf(
+        PropTypes.objectOf(
+            PropTypes.string
+        )
+    )
+};
+
+FooterView.defaultProps = {
+    footerSocials: [
+        {
+            className: "ico-skype",
+            href: "//#"
+        }
+    ],
+    footerAbout: [
+        {
+            ico: "home",
+            title: "Location",
+            text: "324, Golden Tower, Amborkhana, Sylhet"
+        }
+    ]
 };
