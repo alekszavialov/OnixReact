@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {Switch, Router, Route} from 'react-router-dom';
+import {Switch, Router, Route, Redirect} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
 import Page from './components/layout/Page/Page';
 import Home from './components/pages/Home/Home';
-import ErrorPage from "./components/layout/404/ErrorPage";
 
 class App extends Component {
 
@@ -18,7 +17,7 @@ class App extends Component {
                 <Page>
                     <Switch>
                         <Route exact strict path="/" component={Home}/>
-                        <Route component={ErrorPage}/>
+                        <Redirect to="/404"/>
                     </Switch>
                 </Page>
             </Router>

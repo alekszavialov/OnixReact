@@ -21,7 +21,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 body {
-  line-height: 1;
+  line-height: 0;
 }
 
 ol, ul {
@@ -109,6 +109,7 @@ button {
   width: 1140px;
   margin: 0 auto;
   box-sizing: border-box;
+  line-height: 1;
 }
 
 @media only screen and (max-width: 1140px) {
