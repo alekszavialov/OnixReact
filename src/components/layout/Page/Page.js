@@ -1,42 +1,43 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import PageView from './PageView';
-import PageNotFound from "../../elements/PageNotFound/PageNotFound";
+import PageNotFound from '../../elements/PageNotFound/PageNotFound';
 
 class Page extends Component {
-
-    render() {
-        const {pathname} = this.props.location;
-        if (pathname === '/404'){
-            return (
-                <PageView {...<PageNotFound/>}/>
-            )
-        }
-        return (
-            <Fragment>
-                <Header/>
-                <PageView {...this.props.children}/>
-                <Footer/>
-            </Fragment>
-        )
+  render() {
+    const { location, children } = this.props;
+    const { pathname } = location;
+    if (pathname === '/404') {
+      return (
+        <PageView childrens={<PageNotFound />} />
+      );
     }
-
+    return (
+      <>
+        <Header />
+        <PageView childrens={children} />
+        <Footer />
+      </>
+    );
+  }
 }
 
 Page.propTypes = {
-    location: PropTypes.shape({
-        pathname: PropTypes.string
-    })
+  children: PropTypes.node,
+  location: PropTypes.shape({
+    pathname: PropTypes.string
+  })
 };
 
 Page.defaultProps = {
-    location: {
-        pathname: '/'
-    }
+  children: ('Page'),
+  location: {
+    pathname: '/'
+  }
 };
 
 

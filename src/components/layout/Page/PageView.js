@@ -1,5 +1,11 @@
+import PropTypes from 'prop-types';
+
 import '../../../scss/components/layout/page/page.scss';
 
-export default function PageView (props) {
-    return {...props}
+export default function PageView({ childrens }) {
+  return { ...childrens };
 }
+
+PageView.propTypes = {
+  childrens: PropTypes.node.isRequired
+};
