@@ -22,6 +22,7 @@ export default function HomeView({
   changeValue,
   addToYearsTable
 }) {
+  console.log('homeView');
   return (
     <>
       <article id="aboutMe">

@@ -12,6 +12,25 @@ class App extends Component {
     this.history = createBrowserHistory();
   }
 
+  // componentDidMount() {
+  //   const { hash } = this.history.location;
+  //   if (hash !== '') {
+  //     setTimeout(
+  //       () => {
+  //         const id = hash.replace('#', '');
+  //         const element = document.getElementById(id);
+  //         if (element) {
+  //           console.log(element);
+  //           console.log(element.offsetTop);
+  //           console.log(document.body.clientHeight);
+  //           element.scrollIntoView({ behavior: 'smooth' });
+  //         }
+  //       },
+  //       0
+  //     );
+  //   }
+  // }
+
   render() {
     return (
       <Router history={this.history}>
