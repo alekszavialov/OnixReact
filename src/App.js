@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Switch, Router, Route, Redirect 
+  Switch, Router, Route, Redirect
 } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Page from './components/layout/Page/Page';
@@ -10,22 +10,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.history = createBrowserHistory();
-  }
-
-  componentDidMount() {
-    const { hash } = this.history.location;
-    if (hash !== '') {
-      setTimeout(
-        () => {
-          const id = hash.replace('#', '');
-          const element = document.getElementById(id);
-          if (element) {
-            element.scrollIntoView();
-          }
-        },
-        0
-      );
-    }
   }
 
   render() {

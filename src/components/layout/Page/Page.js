@@ -8,6 +8,55 @@ import PageView from './PageView';
 import PageNotFound from '../../elements/PageNotFound/PageNotFound';
 
 class Page extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayButtons: {
+        upButton: false,
+        downButton: false
+      }
+    };
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.checkScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.checkScroll);
+  }
+
+  checkScroll = () => {
+    const { displayButtons: { upButton, downButton } } = this.state;
+    const scroll = window.pageYOffset;
+    const windowHeight = document.body.scrollHeight - window.innerHeight;
+    const delimeter = 100;
+    const updatedUpButton = scroll >= delimeter;
+    const updatedDownButton = scroll <= windowHeight - delimeter;
+    if (updatedUpButton !== upButton || updatedDownButton !== downButton) {
+      this.setState({
+        displayButtons: {
+          upButton: updatedUpButton,
+          downButton: updatedDownButton
+        }
+      });
+    }
+  };
+
+  scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  scrollToBottom = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight - window.innerHeight,
+      behavior: 'smooth'
+    });
+  };
+
   render() {
     const { location, children } = this.props;
     const { pathname } = location;
@@ -16,10 +65,17 @@ class Page extends Component {
         <PageView childrens={<PageNotFound />} />
       );
     }
+    const { displayButtons: { upButton, downButton } } = this.state;
     return (
       <>
         <Header />
-        <PageView childrens={children} />
+        <PageView
+          childrens={children}
+          upButton={upButton}
+          downButton={downButton}
+          scrollToTop={this.scrollToTop}
+          scrollToBottom={this.scrollToBottom}
+        />
         <Footer />
       </>
     );

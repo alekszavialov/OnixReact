@@ -128,9 +128,11 @@ button {
 
 article {
   padding-top: 80px;
+
   h2 {
     position: relative;
     padding: 20px 0;
+
     &:after {
       content: "";
       display: block;
@@ -141,6 +143,33 @@ article {
       background: #fb6470;
     }
   }
+}
+
+.pageNavigation {
+  position: fixed;
+  right: 50px;
+  width: 60px;
+  height: 60px;
+  background: #fb6470;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  z-index: 1;
+  cursor: pointer;
+  border: none;
+  color: #353541;
+  font-size: 16px;
+  border-radius: 50%;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.upPageButton {
+  top: 50px;
+}
+
+.downPageButton {
+  bottom: 50px;
 }
 
 @media only screen and (max-width: 1140px) {

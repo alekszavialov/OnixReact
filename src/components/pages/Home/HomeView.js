@@ -20,7 +20,12 @@ export default function HomeView({
   sortByFilter,
   bubbleSort,
   changeValue,
-  addToYearsTable
+  addToYearsTable,
+  removeItem,
+  handleActive,
+  onDragStart,
+  onDragOver,
+  onDragEnd,
 }) {
   return (
     <>
@@ -90,6 +95,11 @@ export default function HomeView({
         bubbleSort={bubbleSort}
         addToYearsTable={addToYearsTable}
         changeValue={changeValue}
+        removeItem={removeItem}
+        handleActive={handleActive}
+        onDragStart={onDragStart}
+        onDragOver={onDragOver}
+        onDragEnd={onDragEnd}
       />
       <ItemsTree data={workExperience} id="workExperience" title="Work Experience" />
       <ItemsTree data={education} id="education" title="Education" />
@@ -118,21 +128,14 @@ HomeView.propTypes = {
       PropTypes.string
     )
   ).isRequired,
-  objectTable: (props, propName, componentName) => {
-    const propValue = props[propName];
-    const typeOfPropValue = typeof propValue;
-    if (propValue === null) {
-      return null;
-    }
-    if (
-      Array.isArray(propValue)
-      && propValue.filter((item) => !(item.type && item.type.name === 'CustomTableItem')).length === 0
-    ) {
-      return null;
-    }
-    return new Error(`Invalid prop '${propName}' of type '${typeOfPropValue}' supplied to '${componentName}',`
-                     + 'expected \'null\' or \'CustomTableItem\'');
-  },
+  objectTable: PropTypes.objectOf(
+    PropTypes.objectOf(
+      PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool
+      ])
+    )
+  ),
   errorLoadingData: (props, propName, componentName) => {
     const propValue = props[propName];
     const typeOfPropValue = typeof propValue;
@@ -140,23 +143,33 @@ HomeView.propTypes = {
       return false;
     }
     return new Error(`Invalid prop '${propName}' of type '${typeOfPropValue}' supplied to '${componentName}',`
-                     + 'expected \'null\' or \'string\'');
+      + 'expected \'null\' or \'string\'');
   },
   phone: PropTypes.string,
   name: PropTypes.string,
   sortByFilter: PropTypes.func,
   bubbleSort: PropTypes.func,
   changeValue: PropTypes.func,
-  addToYearsTable: PropTypes.func
+  addToYearsTable: PropTypes.func,
+  removeItem: PropTypes.func,
+  handleActive: PropTypes.func,
+  onDragStart: PropTypes.func,
+  onDragOver: PropTypes.func,
+  onDragEnd: PropTypes.func
 };
 
 HomeView.defaultProps = {
-  objectTable: null,
+  objectTable: undefined,
   errorLoadingData: null,
   phone: '',
   name: '',
   sortByFilter: undefined,
   bubbleSort: undefined,
   changeValue: undefined,
-  addToYearsTable: undefined
+  addToYearsTable: undefined,
+  removeItem: undefined,
+  handleActive: undefined,
+  onDragStart: undefined,
+  onDragOver: undefined,
+  onDragEnd: undefined
 };

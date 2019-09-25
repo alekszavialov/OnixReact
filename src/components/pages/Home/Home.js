@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import HomeView from './HomeView';
-import CustomTableItem from './components/CustomTableItem';
 
 export default class Home extends Component {
   constructor(props) {
@@ -106,11 +105,11 @@ export default class Home extends Component {
           description: 'Lorem ipsum dolor sit amet, consectetur et incididunt ut labore et dolorea.'
         },
       ],
-      objectTable: null,
+      objectTable: undefined,
       errorLoadingData: null,
       dragged: {
-        itemID: null,
-        overItemID: null
+        itemID: undefined,
+        overItemID: undefined
       },
       customTableFields: {
         phone: '',
@@ -121,6 +120,11 @@ export default class Home extends Component {
 
   componentDidMount() {
     this.fetchData(process.env.REACT_APP_API_URL);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    const { dragged: { itemID, overItemID } } = nextState;
+    return !(itemID || overItemID);
   }
 
   fetchData = (url) => {
@@ -289,6 +293,9 @@ export default class Home extends Component {
 
   onDragOver = (overItemID) => {
     const { dragged } = this.state;
+    if (dragged.itemID === overItemID || dragged.overItemID === overItemID) {
+      return;
+    }
     this.setState(
       {
         dragged: {
@@ -320,30 +327,6 @@ export default class Home extends Component {
     });
   };
 
-  createCustomTableItems = (data) => {
-    let dataArray = [];
-    Object.keys(data).forEach((key) => {
-      if ((Object.prototype.hasOwnProperty.call(data, key))) {
-        dataArray = [
-          ...dataArray,
-          <CustomTableItem
-            key={key}
-            itemKey={key}
-            phone={data[key].phone}
-            name={data[key].name}
-            isActive={data[key].isActive}
-            removeItem={this.removeItem}
-            handleActive={this.handleActive}
-            onDragStart={this.onDragStart}
-            onDragOver={this.onDragOver}
-            onDragEnd={this.onDragEnd}
-          />
-        ];
-      }
-    });
-    return dataArray;
-  };
-
   render() {
     const {
       skills,
@@ -353,13 +336,12 @@ export default class Home extends Component {
       errorLoadingData,
       customTableFields: { phone, name }
     } = this.state;
-    const customTableItems = objectTable ? this.createCustomTableItems(objectTable) : null;
     return (
       <HomeView
         skills={skills}
         education={education}
         workExperience={workExperience}
-        objectTable={customTableItems}
+        objectTable={objectTable}
         errorLoadingData={errorLoadingData}
         phone={phone}
         name={name}
@@ -368,6 +350,11 @@ export default class Home extends Component {
         bubbleSort={this.bubbleSort}
         changeValue={this.changeValue}
         addToYearsTable={this.addToYearsTable}
+        removeItem={this.removeItem}
+        handleActive={this.handleActive}
+        onDragStart={this.onDragStart}
+        onDragOver={this.onDragOver}
+        onDragEnd={this.onDragEnd}
       />
     );
   }
