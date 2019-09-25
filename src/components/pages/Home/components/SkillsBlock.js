@@ -14,21 +14,21 @@ export default function SkillBlock({ skills }) {
             <h2>My Skills</h2>
             <ul className="my-skills-list">
               {
-                                skills.map((item) => (
-                                  <li key={item.id}>
-                                    <p>{item.title}</p>
-                                    <div className="my-skills-list-scale">
-                                      <div>
-                                        <span style={{ width: `${item.value}%` }} />
-                                      </div>
-                                      <p>
-                                        {item.value}
-%
-                                      </p>
-                                    </div>
-                                  </li>
-                                ))
-                            }
+                skills.map((item) => (
+                  <li key={item.id}>
+                    <p>{item.title}</p>
+                    <div className="my-skills-list-scale">
+                      <div>
+                        <span style={{ width: `${item.value}%` }} />
+                      </div>
+                      <p>
+                        {item.value}
+                        %
+                      </p>
+                    </div>
+                  </li>
+                ))
+              }
             </ul>
           </>
         ) : <Spinner />}

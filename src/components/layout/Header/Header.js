@@ -9,21 +9,21 @@ export default class Header extends Component {
     };
   }
 
-    toggleMenu = () => {
-      const { menuIsOpen } = this.state;
-      this.setState({
-        menuIsOpen: !menuIsOpen
-      });
-    };
+  toggleMenu = () => {
+    const { menuIsOpen } = this.state;
+    this.setState({
+      menuIsOpen: !menuIsOpen
+    });
+  };
 
-    render() {
-      const { menuIsOpen } = this.state;
-      const menuListClass = menuIsOpen ? 'open' : 'hidden';
-      return (
-        <HeaderView
-          toggleMenu={this.toggleMenu}
-          menuListClass={menuListClass}
-        />
-      );
-    }
+  render() {
+    const { menuIsOpen } = this.state;
+    const menuListClass = menuIsOpen ? 'open' : 'hidden';
+    return (
+      <HeaderView
+        toggleMenu={this.toggleMenu}
+        menuListClass={menuListClass}
+      />
+    );
+  }
 }

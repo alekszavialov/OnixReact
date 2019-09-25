@@ -31,7 +31,7 @@ export default function CustomTableItem(
         className="remove"
       >
         <button type="button" onClick={() => removeItem(itemKey)}>
-                    Click to remove
+          Click to remove
         </button>
       </td>
     </tr>

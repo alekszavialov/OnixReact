@@ -20,36 +20,36 @@ export default function FooterView({ footerSocials, footerAbout }) {
           </form>
           <ul className="footer-block-about">
             {
-                            footerAbout.map((item) => (
-                              <li key={item.title}>
-                                <div className={`footer-block-about-ico ico-custom ico-${item.ico}`} />
-                                <div className="footer-block-about-info">
-                                  <span>{item.title}</span>
-                                  <p>{item.text}</p>
-                                </div>
-                              </li>
-                            ))
-                        }
+              footerAbout.map((item) => (
+                <li key={item.title}>
+                  <div className={`footer-block-about-ico ico-custom ico-${item.ico}`} />
+                  <div className="footer-block-about-info">
+                    <span>{item.title}</span>
+                    <p>{item.text}</p>
+                  </div>
+                </li>
+              ))
+            }
           </ul>
         </div>
         <ul className="footer-block-socials">
           {
-                        footerSocials.map(({ className, href }) => (
-                          <li key={className}>
-                            <a
-                              className={`ico-social ${className}`}
-                              rel="noopener noreferrer"
-                              href={href}
-                              target="_blank"
-                            >
-                              &nbsp;
-                            </a>
-                          </li>
-                        ))
-                    }
+            footerSocials.map(({ className, href }) => (
+              <li key={className}>
+                <a
+                  className={`ico-social ${className}`}
+                  rel="noopener noreferrer"
+                  href={href}
+                  target="_blank"
+                >
+                  &nbsp;
+                </a>
+              </li>
+            ))
+          }
         </ul>
         <p className="footer-block-copyright">
-                    Copyright: Junaed Ahmed, All rights reserved
+          Copyright: Junaed Ahmed, All rights reserved
         </p>
       </div>
     </footer>

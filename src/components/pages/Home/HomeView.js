@@ -22,7 +22,6 @@ export default function HomeView({
   changeValue,
   addToYearsTable
 }) {
-  console.log('homeView');
   return (
     <>
       <article id="aboutMe">
@@ -132,7 +131,7 @@ HomeView.propTypes = {
       return null;
     }
     return new Error(`Invalid prop '${propName}' of type '${typeOfPropValue}' supplied to '${componentName}',`
-      + 'expected \'null\' or \'CustomTableItem\'');
+                     + 'expected \'null\' or \'CustomTableItem\'');
   },
   errorLoadingData: (props, propName, componentName) => {
     const propValue = props[propName];
@@ -141,7 +140,7 @@ HomeView.propTypes = {
       return false;
     }
     return new Error(`Invalid prop '${propName}' of type '${typeOfPropValue}' supplied to '${componentName}',`
-      + 'expected \'null\' or \'string\'');
+                     + 'expected \'null\' or \'string\'');
   },
   phone: PropTypes.string,
   name: PropTypes.string,

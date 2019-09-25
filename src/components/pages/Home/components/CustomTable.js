@@ -82,7 +82,7 @@ CustomTable.propTypes = {
       return null;
     }
     return new Error(`Invalid prop '${propName}' of type '${typeOfPropValue}' supplied to '${componentName}',`
-      + 'expected \'null\' or \'CustomTableItem\'');
+                     + 'expected \'null\' or \'CustomTableItem\'');
   },
   phone: PropTypes.string,
   name: PropTypes.string,
