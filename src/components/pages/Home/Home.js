@@ -127,6 +127,28 @@ export default class Home extends Component {
     return !(itemID || overItemID);
   }
 
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    const { objectTable } = this.state;
+    if (prevState.objectTable
+        && objectTable
+        && Object.keys(prevState.objectTable).length < Object.keys(objectTable).length) {
+      const item = document.getElementById('customTableWrapper');
+      if (item.scrollHeight === item.offsetHeight + item.scrollTop) {
+        return {
+          scroll: item.scrollHeight - item.scrollTop
+        };
+      }
+    }
+    return null;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (snapshot !== null && snapshot.scroll) {
+      const item = document.getElementById('customTableWrapper');
+      item.scrollTop = item.scrollHeight - snapshot.scroll;
+    }
+  }
+
   fetchData = (url) => {
     fetch(url)
       .then((response) => {

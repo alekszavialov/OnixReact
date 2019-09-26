@@ -60,26 +60,29 @@ export default function CustomTable(
               <div className="filterTree">
                 <button type="button" onClick={bubbleSort}>Bubble sort by name</button>
               </div>
-              <table className="customTable">
-                <tbody>
+              <div className="customTableAnimation" id="customTableAnimation"/>
+              <div className="customTableWrapper" id="customTableWrapper">
+                <table className="customTable">
+                  <tbody>
                   {
-                  Object.keys(data).map((key) => (
-                    <CustomTableItem
-                      key={key}
-                      itemKey={key}
-                      phone={data[key].phone}
-                      name={data[key].name}
-                      isActive={data[key].isActive}
-                      handleActive={handleActive}
-                      removeItem={removeItem}
-                      onDragStart={onDragStart}
-                      onDragOver={onDragOver}
-                      onDragEnd={onDragEnd}
-                    />
-                  ))
-                }
-                </tbody>
-              </table>
+                    Object.keys(data).map((key) => (
+                      <CustomTableItem
+                        key={key}
+                        itemKey={key}
+                        phone={data[key].phone}
+                        name={data[key].name}
+                        isActive={data[key].isActive}
+                        handleActive={handleActive}
+                        removeItem={removeItem}
+                        onDragStart={onDragStart}
+                        onDragOver={onDragOver}
+                        onDragEnd={onDragEnd}
+                      />
+                    ))
+                  }
+                  </tbody>
+                </table>
+              </div>
             </>
           )
           : loadingOrErrorData}
