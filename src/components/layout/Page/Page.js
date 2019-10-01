@@ -19,6 +19,7 @@ class Page extends Component {
   }
 
   componentDidMount() {
+    this.checkScroll();
     window.addEventListener('scroll', this.checkScroll);
   }
 
@@ -62,7 +63,7 @@ class Page extends Component {
     const { pathname } = location;
     if (pathname === '/404') {
       return (
-        <PageView childrens={<PageNotFound />} />
+        <PageNotFound />
       );
     }
     const { displayButtons: { upButton, downButton } } = this.state;

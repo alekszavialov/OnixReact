@@ -60,11 +60,11 @@ export default function CustomTable(
               <div className="filterTree">
                 <button type="button" onClick={bubbleSort}>Bubble sort by name</button>
               </div>
-              <div className="customTableAnimation" id="customTableAnimation"/>
+              <div className="customTableAnimation" id="customTableAnimation" />
               <div className="customTableWrapper" id="customTableWrapper">
                 <table className="customTable">
                   <tbody>
-                  {
+                    {
                     Object.keys(data).map((key) => (
                       <CustomTableItem
                         key={key}
