@@ -6,21 +6,37 @@ import { createBrowserHistory } from 'history';
 import Page from './components/layout/Page/Page';
 import Home from './components/pages/Home/Home';
 
+import { ThemeProvider, themes } from './components/context/ThemeContext';
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.history = createBrowserHistory();
+    this.state = {
+      themeColor: themes.light.themeName
+    };
   }
 
+  changeThemeColor = () => {
+    const { themeColor } = this.state;
+    const theme = themeColor === themes.light.themeName ? themes.dark.themeName : themes.light.themeName;
+    this.setState({
+      themeColor: theme
+    });
+  };
+
   render() {
+    const { themeColor } = this.state;
     return (
       <Router history={this.history}>
-        <Page>
-          <Switch>
-            <Route exact strict path="/" component={Home} />
-            <Redirect to="/404" />
-          </Switch>
-        </Page>
+        <ThemeProvider value={{ theme: themeColor, changeThemeColor: this.changeThemeColor }}>
+          <Page>
+            <Switch>
+              <Route exact strict path="/" component={Home} />
+              <Redirect to="/404" />
+            </Switch>
+          </Page>
+        </ThemeProvider>
       </Router>
     );
   }

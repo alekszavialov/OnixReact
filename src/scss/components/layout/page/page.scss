@@ -1,4 +1,5 @@
 @import '../../../mixins';
+@import '../../../variables';
 
 @include font-face(Raleway-Regular, "../../../../assets/fonts/Raleway/Raleway-Regular", null, null, eot woff ttf);
 @include font-face(Raleway-Medium, '../../../../assets/fonts/Raleway/Raleway-Medium', null, null, eot woff ttf);
@@ -54,6 +55,12 @@ footer {
   padding: 107px 0 30px 0;
 }
 
+.dark-theme{
+  footer{
+    background: map_get($dark-theme, bgDark);
+  }
+}
+
 @media only screen and (max-width: 1140px) {
   footer {
     padding: 30px 0;
@@ -67,7 +74,7 @@ table {
 
 h1 {
   font-size: 48px;
-  color: #ffffff;
+  color: map_get($light-theme, darkColor);
   font-family: Raleway-SemiBold, sans-serif;
 }
 
@@ -112,14 +119,27 @@ button {
   line-height: 1;
 }
 
+header{
+  background: map_get($light-theme, bgDark);
+}
+
+.dark-theme{
+  header{
+    background: map_get($dark-theme, bgDark);
+  }
+  h1 {
+    color: map_get($dark-theme, lightColor);
+  }
+
+  h2 {
+    color: map_get($dark-theme, textColor);
+  }
+}
+
 @media only screen and (max-width: 1140px) {
   .container {
     width: 100%;
   }
-}
-
-.bg-dark {
-  background: #353541;
 }
 
 .separator {
@@ -140,7 +160,7 @@ article {
       height: 2px;
       position: absolute;
       bottom: 0;
-      background: #fb6470;
+      background: $wildWatermelonBackground;
     }
   }
 }
@@ -156,7 +176,7 @@ article {
   z-index: 1;
   cursor: pointer;
   border: none;
-  color: #353541;
+  color: map_get($light-theme, darkColor);
   font-size: 16px;
   border-radius: 50%;
   &:hover {

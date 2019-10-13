@@ -1,7 +1,8 @@
 @import "../../../mixins";
+@import "../../../variables";
 
 #aboutMe {
-  background: #f9f9f9;
+  background: map_get($light-theme, bgLight);
 }
 
 .about-me-block {
@@ -49,12 +50,12 @@
     line-height: 20px;
     width: 405px;
     font-size: 16px;
-    color: #3e3e3e;
+    color: map_get($light-theme, textColor);
     margin: 30px 0 20px 0;
   }
 
   ul {
-    background: #ffffff;
+    background: map_get($light-theme, bgWhite);
     @include display-flex();
     @include flex-direction(column);
     width: 339px;
@@ -72,7 +73,7 @@
     @include flex-wrap(wrap);
 
     span, p, a {
-      color: #3e3e3e;
+      color: map_get($light-theme, textColor);
       font-size: 18px;
       max-width: 100%;
     }
@@ -80,7 +81,7 @@
     span {
       font-family: Raleway-SemiBold, sans-serif;
       @include display-flex();
-      color: #3e3e3e;
+      color: map_get($light-theme, textColor);
       position: relative;
 
       &:after {
@@ -90,6 +91,26 @@
         font-size: 18px;
         position: relative;
         right: 0;
+      }
+    }
+  }
+}
+
+.dark-theme {
+  #aboutMe {
+    background: map_get($dark-theme, bgLight);
+  }
+
+  .about-me-block-info {
+    > p {
+      color: map_get($dark-theme, textColor);
+    }
+    ul{
+      background: map_get($dark-theme, bgText);
+    }
+    li{
+      span, p, a {
+        color: map_get($dark-theme, textColor);
       }
     }
   }
@@ -134,6 +155,12 @@
   }
 }
 
+.dark-theme {
+  #workExperience{
+    background: map_get($dark-theme, bgLight);
+  }
+}
+
 @media only screen and (max-width: 1140px) {
   #workExperience {
     padding-top: 40px;
@@ -152,6 +179,12 @@
   }
 }
 
+.dark-theme {
+  #education{
+    background: map_get($dark-theme, bgText);
+  }
+}
+
 @media only screen and (max-width: 1140px) {
   #education {
     padding: 40px 0;
@@ -159,7 +192,7 @@
 }
 
 #mySkills {
-  background: #1d1d24;
+  background: map_get($light-theme, bgLight);
   padding: 65px 0 55px 0;
 
   h2 {
@@ -167,7 +200,16 @@
   }
 
   h2, p {
-    color: #ffffff;
+    color: map_get($light-theme, darkColor);
+  }
+}
+
+.dark-theme {
+  #mySkills{
+    background: map_get($dark-theme, bgLight);
+    h2, p {
+      color: map_get($dark-theme, textColor);
+    }
   }
 }
 

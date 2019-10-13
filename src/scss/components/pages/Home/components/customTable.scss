@@ -1,4 +1,6 @@
-.customTableWrapper{
+@import "../../../../variables";
+
+.customTableWrapper {
   max-height: 400px;
   overflow-y: auto;
   position: relative;
@@ -28,7 +30,7 @@
   }
 }
 
-.customTableAnimation{
+.customTableAnimation {
   display: block;
   position: relative;
   left: 0;
@@ -45,5 +47,28 @@
   }
   100% {
     left: calc(100% - 40px);
+  }
+}
+
+.dark-theme {
+  #table {
+    background: map_get($dark-theme, bgText);
+    h3{
+      color: map_get($dark-theme, lightColor);
+    }
+  }
+
+  .customTable {
+    td {
+      color: map_get($dark-theme, lightColor);
+    }
+
+    tr, td {
+      border-color: map_get($dark-theme, lightColor);
+    }
+  }
+
+  .customTableAnimation {
+    background: map_get($dark-theme, bgLight);
   }
 }

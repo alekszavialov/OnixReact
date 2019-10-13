@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import PageView from './PageView';
 import PageNotFound from '../../elements/PageNotFound/PageNotFound';
 
@@ -68,17 +66,13 @@ class Page extends Component {
     }
     const { displayButtons: { upButton, downButton } } = this.state;
     return (
-      <>
-        <Header />
-        <PageView
-          childrens={children}
-          upButton={upButton}
-          downButton={downButton}
-          scrollToTop={this.scrollToTop}
-          scrollToBottom={this.scrollToBottom}
-        />
-        <Footer />
-      </>
+      <PageView
+        childrens={children}
+        upButton={upButton}
+        downButton={downButton}
+        scrollToTop={this.scrollToTop}
+        scrollToBottom={this.scrollToBottom}
+      />
     );
   }
 }

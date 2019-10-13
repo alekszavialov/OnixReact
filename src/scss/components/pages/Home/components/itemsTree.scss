@@ -1,4 +1,5 @@
 @import "../../../../mixins";
+@import "../../../../variables";
 
 .tree {
   position: relative;
@@ -6,7 +7,7 @@
   @include flex-wrap (wrap);
 
   .tree-item {
-    background: #353541;
+    background: map_get($light-theme, darkColor);
     padding: 20px;
     @include display-flex();
     box-sizing: border-box;
@@ -28,13 +29,13 @@
     h3 {
       margin: 0 20px 0 0;
       font-size: 22px;
-      color: #ffffff;
+      color: $textColor;
       font-family: Raleway-Medium, sans-serif;
     }
 
     span {
       font-size: 20px;
-      color: #ffffff;
+      color: $textColor;
     }
 
     .tree-item-date, p {
@@ -44,11 +45,11 @@
     .tree-item-date {
       font-size: 18px;
       text-transform: uppercase;
-      color: #fb6470;
+      color: $wildWatermelonColor;
     }
 
     p {
-      color: #ffffff;
+      color: $textColor;
       line-height: 22px;
     }
   }
@@ -109,7 +110,7 @@
       border: 2px solid #050505;
       border-radius: 50%;
       z-index: 1;
-      background: #fff;
+      background: map_get($light-theme, bgWhite);
 
       &:after {
         content: "";
@@ -120,7 +121,7 @@
         border-radius: 50%;
         top: 50%;
         left: 50%;
-        background: #fb6470;
+        background: $wildWatermelonBackground;
         position: absolute;
         transform: translateX(-50%) translateY(-50%);
       }

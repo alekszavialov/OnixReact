@@ -1,4 +1,5 @@
 @import "../../../../mixins";
+@import "../../../../variables";
 
 .my-skills-list-scale {
   @include display-flex();
@@ -12,14 +13,14 @@
   div {
     width: 265px;
     height: 5px;
-    background: #f9f9f9;
+    background: map_get($light-theme, bgLight);
     position: relative;
 
     span {
       position: relative;
       display: block;
       height: 100%;
-      background: #fb6470;
+      background: $wildWatermelonBackground;
 
       &:before {
         content: "";
@@ -30,7 +31,7 @@
         width: 18px;
         height: 18px;
         transform: translateX(-50%) translateY(-50%);
-        background: #fb6470;
+        background: $wildWatermelonBackground;
         border-radius: 50%;
       }
     }

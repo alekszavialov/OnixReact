@@ -1,4 +1,5 @@
 @import "../../../mixins";
+@import "../../../variables";
 
 .footer-block {
   @include display-flex();
@@ -190,7 +191,7 @@
   @include mask-size(cover);
   @include mask-repeat(no-repeat);
   @include mask-position(center);
-  background: #3e3e3e;
+  background: map_get($light-theme, textColor);
   display: block;
 }
 
@@ -224,7 +225,7 @@
   @include mask-image(url(../../../../assets/images/icons/social/dribbble-brands.svg));
 
   &:hover {
-    background: #fb6470;
+    background: $wildWatermelonBackground;
   }
 }
 
@@ -232,7 +233,7 @@
   @include mask-image(url(../../../../assets/images/icons/social/skype-brands.svg));
 
   &:hover {
-    background: #69d4d8;
+    background: $azure;
   }
 }
 
@@ -240,6 +241,18 @@
   @include mask-image(url(../../../../assets/images/icons/social/twitter-brands.svg));
 
   &:hover {
-    background: #69d4d8;
+    background: $azure;
+  }
+}
+
+.dark-theme{
+  .ico-social, .ico-custom{
+    background: map_get($dark-theme, bgText);
+  }
+  .footer-block-about-info span, .footer-block-about-info p{
+    color: map_get($dark-theme, textColor);
+  }
+  .footer-block-copyright{
+    color: map_get($dark-theme, textColor);
   }
 }

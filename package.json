@@ -35,7 +35,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "node_modules/.bin/eslint . --max-warnings=0",
+      "pre-commit": "node_modules/.bineslint . --max-warnings=0",
       "pre-push": "node_modules/.bin/eslint . --max-warnings=0"
     }
   },

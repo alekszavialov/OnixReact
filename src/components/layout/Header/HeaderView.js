@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { ThemeConsumer } from '../../context/ThemeContext';
+
 import '../../../scss/components/layout/header/header.scss';
 
 export default function HeaderView({ toggleMenu, menuListClass }) {
   return (
-    <header className="bg-dark" id="head">
+    <header id="head">
       <div className="container">
-        <div id="test" className="navigation-menu bg-dark">
+        <div id="test" className="navigation-menu">
           <div
             id="navigationMenuButton"
             role="button"
@@ -39,7 +41,12 @@ export default function HeaderView({ toggleMenu, menuListClass }) {
               <p>#Graphic Designer</p>
             </li>
           </ul>
-          <button type="button">hire me!</button>
+          <ThemeConsumer>
+            {
+              ({ changeThemeColor }) => <button onClick={changeThemeColor} type="button">Change theme color</button>
+            }
+          </ThemeConsumer>
+
         </div>
       </div>
     </header>
