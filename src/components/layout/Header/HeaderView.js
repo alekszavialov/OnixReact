@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ThemeConsumer } from '../../context/ThemeContext';
+import { ThemeConsumer } from '../../../context/ThemeContext';
 
 import '../../../scss/components/layout/header/header.scss';
 

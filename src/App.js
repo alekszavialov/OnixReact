@@ -6,7 +6,7 @@ import { createBrowserHistory } from 'history';
 import Page from './components/layout/Page/Page';
 import Home from './components/pages/Home/Home';
 
-import { ThemeProvider, themes } from './components/context/ThemeContext';
+import { ThemeProvider, themes } from './context/ThemeContext';
 
 class App extends Component {
   constructor(props) {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import HomeView from './HomeView';
-import withAPIData from '../../hoc/withAPIData';
+import withAPIData from '../../../hoc/withAPIData';
 
 import homeData from '../../../mock/homeData';
 
