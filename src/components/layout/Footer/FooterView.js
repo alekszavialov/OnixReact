@@ -20,12 +20,12 @@ export default function FooterView({ footerSocials, footerAbout }) {
           </form>
           <ul className="footer-block-about">
             {
-              footerAbout.map((item) => (
-                <li key={item.title}>
-                  <div className={`footer-block-about-ico ico-custom ico-${item.ico}`} />
+              footerAbout.map(({ title, ico, text }) => (
+                <li key={title}>
+                  <div className={`footer-block-about-ico ico-custom ico-${ico}`} />
                   <div className="footer-block-about-info">
-                    <span>{item.title}</span>
-                    <p>{item.text}</p>
+                    <span>{title}</span>
+                    <p>{text}</p>
                   </div>
                 </li>
               ))
@@ -61,26 +61,10 @@ FooterView.propTypes = {
     PropTypes.objectOf(
       PropTypes.string
     )
-  ),
+  ).isRequired,
   footerAbout: PropTypes.arrayOf(
     PropTypes.objectOf(
       PropTypes.string
     )
-  )
-};
-
-FooterView.defaultProps = {
-  footerSocials: [
-    {
-      className: 'ico-skype',
-      href: '//#'
-    }
-  ],
-  footerAbout: [
-    {
-      ico: 'home',
-      title: 'Location',
-      text: '324, Golden Tower, Amborkhana, Sylhet'
-    }
-  ]
+  ).isRequired
 };

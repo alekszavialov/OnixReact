@@ -7,6 +7,7 @@ import CustomTable from './components/CustomTable';
 import SkillsBlock from './components/SkillsBlock';
 
 import '../../../scss/components/pages/Home/home.scss';
+import { ThemeConsumer, ThemeProvider } from '../../../context/ThemeContext';
 
 export default function HomeView({
   skills,
@@ -44,6 +45,16 @@ export default function HomeView({
         onDragOver={onDragOver}
         onDragEnd={onDragEnd}
       />
+      <ThemeConsumer>
+        {
+          (teas) => (
+            <ThemeProvider value={{ ...teas, test: 1 }}>
+              <SkillsBlock skills={skills} />
+            </ThemeProvider>
+          )
+        }
+      </ThemeConsumer>
+
       <ItemsTree data={workExperience} id="workExperience" title="Work Experience" />
       <ItemsTree data={education} id="education" title="Education" />
       <SkillsBlock skills={skills} />

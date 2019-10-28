@@ -1,94 +1,72 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 import PageView from './PageView';
 import PageNotFound from '../../elements/PageNotFound/PageNotFound';
 
-class Page extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      displayButtons: {
-        upButton: false,
-        downButton: false
-      }
-    };
-  }
+function Page({ location: { pathname }, children }) {
+  const [displayButtons, setDisplayButtons] = useState({ upButton: false, downButton: false });
 
-  componentDidMount() {
-    this.checkScroll();
-    window.addEventListener('scroll', this.checkScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.checkScroll);
-  }
-
-  checkScroll = () => {
-    const { displayButtons: { upButton, downButton } } = this.state;
-    const scroll = window.pageYOffset;
-    const windowHeight = document.body.scrollHeight - window.innerHeight;
-    const delimeter = 100;
-    const updatedUpButton = scroll >= delimeter;
-    const updatedDownButton = scroll <= windowHeight - delimeter;
-    if (updatedUpButton !== upButton || updatedDownButton !== downButton) {
-      this.setState({
-        displayButtons: {
-          upButton: updatedUpButton,
-          downButton: updatedDownButton
-        }
-      });
-    }
-  };
-
-  scrollToTop = () => {
+  const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   };
 
-  scrollToBottom = () => {
+  const scrollToBottom = () => {
     window.scrollTo({
       top: document.body.scrollHeight - window.innerHeight,
       behavior: 'smooth'
     });
   };
 
-  render() {
-    const { location, children } = this.props;
-    const { pathname } = location;
-    if (pathname === '/404') {
-      return (
-        <PageNotFound />
-      );
+  const checkScroll = () => {
+    const { upButton, downButton } = displayButtons;
+    const scroll = window.pageYOffset;
+    const windowHeight = document.body.scrollHeight - window.innerHeight;
+    const delimeter = 100;
+    const updatedUpButton = scroll >= delimeter;
+    const updatedDownButton = scroll <= windowHeight - delimeter;
+    if (updatedUpButton !== upButton || updatedDownButton !== downButton) {
+      setDisplayButtons({
+        upButton: updatedUpButton,
+        downButton: updatedDownButton
+      });
     }
-    const { displayButtons: { upButton, downButton } } = this.state;
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', checkScroll);
+    return () => {
+      window.removeEventListener('scroll', checkScroll);
+    };
+  });
+
+
+  if (pathname === '/404') {
     return (
-      <PageView
-        childrens={children}
-        upButton={upButton}
-        downButton={downButton}
-        scrollToTop={this.scrollToTop}
-        scrollToBottom={this.scrollToBottom}
-      />
+      <PageNotFound />
     );
   }
+  const { upButton, downButton } = displayButtons;
+  return (
+    <PageView
+      childrens={children}
+      upButton={upButton}
+      downButton={downButton}
+      scrollToTop={scrollToTop}
+      scrollToBottom={scrollToBottom}
+    />
+  );
 }
 
 Page.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string
-  })
-};
-
-Page.defaultProps = {
-  children: ('Page'),
-  location: {
-    pathname: '/'
-  }
+  }).isRequired
 };
 
 
